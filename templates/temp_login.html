@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+<!-- section -->
+{% block section %}
+<section class="bg">
+    <div class="login-area">
+        <h1>My Wish List</h1>
+        <h2>Share your interest with your friends</h2>
+        <div class="login-form">
+            <div class="row_ID">
+                <div class="form-floating mb-3">
+                    <!--                    <label for="ID">ID Password</label>-->
+                    <input type="email" class="form-control" id="ID" placeholder="ID">
+                </div>
+            </div>
+            <div class="row_Password">
+                <div class="form-floating">
+                    <!--                                        <label for="Password">Password</label>-->
+                    <input type="password" class="form-control" id="Password" placeholder="Password">
+                </div>
+            </div>
+            <div class="row_login_button">
+                <button type="button" class="btn btn-outline-light" onclick="login()">Login</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+<!-- style -->
+{% block style %}
+<style>
+    .bg {
+        width: 100vw;
+        height: calc(100vh - 64px);
+        background-image: url("../static/mywishlist_login2.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bg .login-area {
+        color: honeydew;
+        /*display: flex;*/
+        /*flex-direction: column;*/
+        /*align-items: flex-end;*/
+    }
+
+    .bg .login-area h1 {
+        font-family: 'Tangerine', cursive;
+        font-size: 135px;
+        /*margin: 5% 0 0 0;*/
+        position: fixed;
+        right: 15%;
+        bottom: 58%;
+    }
+
+    .bg .login-area h2 {
+        font-size: 35px;
+        font-family: 'Tangerine', cursive;
+        color: beige;
+        /*margin: 0 0 25% 0;*/
+        position: fixed;
+        right: 16%;
+        bottom: 56%;
+    }
+
+    .bg .login-form {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 40px;
+        border-top: 1px solid honeydew;
+        border-bottom: 1px solid honeydew;
+        position: fixed;
+        right: 16%;
+        bottom: 15%;
+    }
+
+    .bg .login-form .row_ID {
+        padding: 1px 0;
+    }
+
+    .bg .login-form .row_Password {
+        padding: 1px 0;
+    }
+
+    .bg .login-form .row_login_button {
+        padding: 17px 0 0 70px;
+    }
+
+    .bg .login-form label {
+        display: inline-block;
+        width: 120px;
+    }
+
+</style>
+{% endblock %}
+
+<!-- script -->
+{% block script %}
+<script>
+    function login() {
+        let id = $('#ID').val()
+        let pw = $('#Password').val()
+
+        $.ajax({
+            type: "POST",
+            url: "/api/login",
+            data: {id_give: id, pw_give: pw},
+            success: function (response) {
+                if (response['result'] === 'success') {
+                    // jwt 토큰을 token_give이라는 키 값으로 쿠키에 저장
+                    $.cookie('token_give', response['token'])
+                    location.href = '/'
+                } else {
+                    // 로그인이 안되면 에러메시지를 띄웁니다.
+                    alert(response['msg'])
+                }
+            }
+        })
+    }
+</script>
+{% endblock %}

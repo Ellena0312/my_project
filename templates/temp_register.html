@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+<!-- section -->
+{% block section %}
+<section class="bg">
+    <div class="sign-up-area">
+        <h1>My Wish List</h1>
+        <h2>Share your interest with your friends</h2>
+        <div class="button-wrap">
+            <div class="input-group mb-3">
+                <span class="input-group-text button-name">Name</span>
+                <input type="text" class="form-control button-name" id="name" aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text button-ID">ID</span>
+                <input type="text" class="form-control button-ID" id="id" aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text button-pw">Password</span>
+                <input type="text" class="form-control button-pw" id="pw" aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text button-pw-check">Password check</span>
+                <input type="text" class="form-control button-pw-check" id="pw_check"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group">
+                <span class="input-group-text button-address">Address</span>
+                <textarea class="form-control button-address" id="address" aria-label="With textarea"></textarea>
+            </div>
+            <button class="btn btn-light sign-up-button" onclick="signUp()">Sign Up</button>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<!-- style -->
+{% block style %}
+
+<style>
+    .bg {
+        width: 100vw;
+        height: calc(100vh - 64px);
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../static/mywishlist_login2.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bg .sign-up-area {
+        color: honeydew;
+        /*display: flex;*/
+        /*flex-direction: column;*/
+        /*align-items: flex-end;*/
+    }
+
+    .bg .sign-up-area h1 {
+        font-family: 'Tangerine', cursive;
+        font-size: 135px;
+        /*margin: 5% 0 0 0;*/
+        position: fixed;
+        right: 15%;
+        bottom: 65%;
+    }
+
+    .bg .sign-up-area h2 {
+        font-size: 35px;
+        font-family: 'Tangerine', cursive;
+        color: beige;
+        /*margin: 0 0 25% 0;*/
+        position: fixed;
+        right: 16%;
+        bottom: 62%;
+    }
+
+    .button-wrap {
+        font-family: 'Tangerine', cursive;
+    }
+
+    .button-wrap .button-name {
+        position: fixed;
+        left: 50%;
+        bottom: 50%;
+    }
+
+    .button-wrap .button-ID {
+        position: fixed;
+        left: 50%;
+        bottom: 42%;
+    }
+
+    .button-wrap .button-pw {
+        position: fixed;
+        left: 50%;
+        bottom: 34%;
+    }
+
+    .button-wrap .button-pw-check {
+        position: fixed;
+        left: 50%;
+        bottom: 26%;
+    }
+
+    .button-wrap .button-address {
+        position: fixed;
+        left: 50%;
+        bottom: 18%;
+    }
+
+    .button-wrap .sign-up-button {
+        position: fixed;
+        left: 50%;
+        bottom: 10%;
+    }
+</style>
+{% endblock %}
+
+<!-- script -->
+{% block script %}
+<script>
+    function signUp() {
+        let id = $('#id').val()
+        let pw = $('#pw').val()
+        let name = $('#name').val()
+        let pw_check = $('#pw_check').val()
+
+        if (id === '') return alert('아이디를 입력해주세요')
+        if (pw === '') return alert('비밀번호를 입력해주세요')
+        if (pw != pw_check) return alert('비밀번호와 비밀번호 확인이 일치하지 않습니다')
+        if (name === '') return alert('닉네임을 입력해주세요')
+
+        $.ajax({
+            type: "POST",
+            url: "/api/register",
+            data: {id_give: id, pw_give: pw, name_give: name},
+            success: function (response) {
+                if (response['result'] === 'success') {
+                    alert('🎉 Sign up is complete 🎉')
+                    location.href = '/login'
+                } else {
+                    alert(response['msg'])
+                }
+            }
+        })
+    }
+</script>
+{% endblock %}

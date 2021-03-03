@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Wish List | Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Noto+Serif+KR:wght@300&family=Raleway:wght@500&family=Tangerine&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        * {
+            font-family: 'Kalam', cursive;
+        }
+
+        html, body {
+            margin: 0px;
+        }
+
+        nav {
+            font-family: 'Raleway', sans-serif;
+            height: 64px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav > .title {
+            text-align: center;
+            position: fixed;
+            top: 15px;
+        }
+
+        nav > .actions {
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            top: 20px;
+            right: 16px;
+        }
+
+        nav > .actions > button {
+            font-family: 'Raleway', sans-serif;
+            list-style-type: none;
+            margin-left: 16px;
+        }
+
+    </style>
+
+    <!-- block : style -->
+    {% block style %}{% endblock %}
+
+</head>
+<body>
+<nav>
+    <h2 class="title">WISH NOTE</h2>
+    <ul class="actions">
+        <button type="button" class="btn btn-light" onclick="location.href='/register'">Sign up</button>
+        <button type="button" class="btn btn-light" onclick="signOut()">Sign out</button>
+        <button type="button" class="btn btn-light">Contact</button>
+    </ul>
+</nav>
+
+<!-- block : section -->
+<div id="section">
+    {% block section %}{% endblock %}
+</div>
+
+<!-- JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- jquery cookie 라이브러리(jquery 다음에 선언되어야함) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script> <!--이거는 쿠키!-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<!-- block : script -->
+{% block script %}{% endblock %}
+
+</body>
+</html>

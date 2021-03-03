@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+<!-- section -->
+{% block section %}
+
+<section>
+    <aside>aside</aside>
+    <article class="show_article">
+        <div class="card">card</div>
+        <div class="card">card</div>
+        <div class="card">card</div>
+        <div class="card">card</div>
+        <div class="card">card</div>
+        <div class="card">card</div>
+        <div class="card">card</div>
+        <div class="card">card</div>
+        <div class="card">card</div>
+        <div class="card">card</div>
+    </article>
+</section>
+
+{% endblock %}
+
+<!-- style -->
+{% block style %}
+<style>
+    section {
+        height: 92%;
+        display: flex;
+        flex-direction: row; /* 생략해고 row*/
+    }
+
+    aside {
+        width: 250px;
+    }
+
+    article {
+        width: calc(100vw - 250px);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        overflow: auto;
+        justify-content: space-evenly;
+    }
+
+    * {
+        font-family: 'Gaegu', cursive;
+        width: 100%;
+        height: 100%;
+    }
+
+    .nav_title {
+        font-size: 45px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .show_article {
+        background-image: url("../static/mywishlist_show.jpg");
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .buttons {
+        width: 5%;
+        height: 5%;
+        position: fixed;
+        bottom: 140px;
+        right: 340px;
+    }
+
+    .card {
+        width: 200px;
+        height: 200px;
+        background-color: white;
+        margin: 10px;
+    }
+
+</style>
+{% endblock %}
+
+<!-- script -->
+{% block script %}
+<script>
+    $(document).ready(function () {
+        // getUserNickname()
+        let nickname = "{{ user['nick'] }}"
+        alert(`${nickname}님 반갑습니다 👋`)
+    });
+
+    function signOut() {
+        // 쿠키 삭제
+        $.removeCookie('token_give')
+        alert('Sign Out! 👋')
+        location.href = '/login'
+    }
+</script>
+{% endblock %}
