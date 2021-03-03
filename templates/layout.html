@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>My Wish List | Login</title>
+    <title>My Wish List | MOONG</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Noto+Serif+KR:wght@300&family=Raleway:wght@500&family=Tangerine&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Noto+Serif+KR:wght@200&family=Raleway:wght@500&family=Tangerine&display=swap"
           rel="stylesheet">
 
     <style>
@@ -31,9 +31,11 @@
         }
 
         nav > .title {
+            font-family: 'Raleway', sans-serif;
+            font-size: 38px;
             text-align: center;
             position: fixed;
-            top: 15px;
+            top: 8px;
         }
 
         nav > .actions {
@@ -48,6 +50,7 @@
             font-family: 'Raleway', sans-serif;
             list-style-type: none;
             margin-left: 16px;
+            background-color: white;
         }
 
     </style>
@@ -58,7 +61,7 @@
 </head>
 <body>
 <nav>
-    <h2 class="title">WISH NOTE</h2>
+    <a class="title">WISH NOTE</a>
     <ul class="actions">
         <button type="button" class="btn btn-light" onclick="location.href='/register'">Sign up</button>
         <button type="button" class="btn btn-light" onclick="signOut()">Sign out</button>

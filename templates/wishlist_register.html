@@ -15,13 +15,11 @@
             crossorigin="anonymous"></script>
     <title>My Wish List | register</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Noto+Serif+KR:wght@300&family=Raleway:wght@500&family=Tangerine&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&family=Raleway:wght@500&family=Tangerine&display=swap"
           rel="stylesheet">
     <style>
-
         * {
-            /*font-family: 'Kalam', cursive;*/
-            font-family: 'Tangerine', cursive;
+            font-family: 'Noto Serif KR', serif;
         }
 
         html, body {
@@ -64,71 +62,62 @@
             background-position: center;
         }
 
-        .bg .sign-in-area {
+        .bg .sign-up-area {
             color: honeydew;
-            /*display: flex;*/
-            /*flex-direction: column;*/
-            /*align-items: flex-end;*/
-        }
-
-        .bg .sign-in-area h1 {
-            font-family: 'Tangerine', cursive;
-            font-size: 135px;
-            /*margin: 5% 0 0 0;*/
             position: fixed;
             right: 15%;
-            bottom: 65%;
+            bottom: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
         }
 
-        .bg .sign-in-area h2 {
+        .bg .sign-up-area h1 {
+            font-family: 'Tangerine', cursive;
+            font-size: 135px;
+            margin: 10% 0 0 0;
+        }
+
+        .bg .sign-up-area h2 {
             font-size: 35px;
             font-family: 'Tangerine', cursive;
             color: beige;
-            /*margin: 0 0 25% 0;*/
             position: fixed;
-            right: 16%;
-            bottom: 62%;
+            right: 15%;
+            bottom: 58%;
+            /*margin: 0 0 0 0;*/
         }
 
-        .button-wrap {
-        }
-
-        .button-wrap .button-name {
+        .input-button-wrap {
+            width: 30%;
             position: fixed;
-            left: 50%;
-            bottom: 50%;
-        }
-
-        .button-wrap .button-ID {
-            position: fixed;
-            left: 50%;
-            bottom: 42%;
-        }
-
-        .button-wrap .button-pw {
-            position: fixed;
-            left: 50%;
-            bottom: 34%;
-        }
-
-        .button-wrap .button-pw-check {
-            position: fixed;
-            left: 50%;
-            bottom: 26%;
-        }
-
-        .button-wrap .button-address {
-            position: fixed;
-            left: 50%;
-            bottom: 18%;
-        }
-
-        .button-wrap .sign-up-button {
-            position: fixed;
-            left: 50%;
+            left: 55%;
             bottom: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
         }
 
+        .input-button-wrap .input_style {
+            border: 2px solid black;
+            border-radius: 5px;
+            margin: 0 0 5px 2px;
+            opacity: 10%;
+            height: 40px;
+            width: 80%;
+        }
+
+        .input-button-wrap .sign-up-button {
+            margin-top: 1rem;
+            background-color: white;
+            opacity: 30%;
+        }
+
+        .input-button-wrap .sign-up-button:hover{
+            margin-top: 1rem;
+            background-color: white;
+            opacity: 100%;
+        }
 
     </style>
 </head>
@@ -136,42 +125,32 @@
 <nav>
     <h2 class="title">WISH NOTE</h2>
     <ul class="actions">
-        <button type="button" class="btn btn-light" onclick="location.href='/register'">Sign in</button>
+        <button type="button" class="btn btn-light" onclick="location.href='/register'">Sign up</button>
         <button type="button" class="btn btn-light" onclick="signOut()">Sign out</button>
         <button type="button" class="btn btn-light">Contact</button>
-
     </ul>
 </nav>
 <section class="bg">
-    <div class="sign-in-area">
+    <div class="sign-up-area">
         <h1>My Wish List</h1>
-        <h2>Share your interest with your friends</h2>
-        <div class="button-wrap">
-            <div class="input-group mb-3">
-                <span class="input-group-text button-name">Name</span>
-                <input type="text" class="form-control button-name" id="Name" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text button-ID">ID</span>
-                <input type="text" class="form-control button-ID" id="ID" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text button-pw">Password</span>
-                <input type="text" class="form-control button-pw" id="Password" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text button-pw-check">Password check</span>
-                <input type="text" class="form-control button-pw-check" id="Password_check"
-                       aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group">
-                <span class="input-group-text button-address">Address</span>
-                <textarea class="form-control button-address" id="Address" aria-label="With textarea"></textarea>
-            </div>
+        <h2>Step into our wish note by signing up here.</h2>
+        <div class="input-button-wrap">
+            <!--            <div class="input-group mb-3">-->
+            <!--                <span class="input-group-text button-name">Name</span>-->
+            <label for="name">Name <input type="text" class="input_style" id="name">
+            </label>
+
+            <label for="id">ID <input type="text" class="input_style" id="id">
+            </label>
+
+            <label for="pw">Password <input type="password" class="input_style" id="pw">
+            </label>
+
+            <label for="pw_check">PW check <input type="password" class="input_style" id="pw_check">
+            </label>
+
+            <label for="pw_check">Address <input type="textarea" class="input_style" id="address">
+            </label>
             <button class="btn btn-light sign-up-button" onclick="signUp()">Sign Up</button>
         </div>
     </div>

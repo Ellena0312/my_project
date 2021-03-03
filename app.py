@@ -55,17 +55,17 @@ def login_required(f):
 @app.route('/')
 @login_required
 def home():
-    return render_template('wishlist_show_mine.html', user=g.user)
+    return render_template('temp_show_mine.html', user=g.user)
 
 
 @app.route('/login')  # / 를 라우트라고 부름. (/ 하나면 루트) 웹서버에 여러 기능을 해줄 수 있도록함
 def login():  # 얘는 함수를 실행하려면 라우트로 요청하면 돼 따로 호출없음
-    return render_template('wishlist_login.html')
+    return render_template('temp_login.html')
 
 
 @app.route('/register')
 def register():
-    return render_template('register.html')
+    return render_template('temp_register.html')
 
 
 #################################
@@ -88,7 +88,7 @@ def api_register():
     # pw를 sha256 방법(단방향)으로 암호화
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
-    db.wish_note_user.insert_one({'id': id_receive, 'pw': pw_hash, 'nick': name_receive})
+    db.wish_note_user.insert_one({'id': id_receive, 'pw': pw_hash, 'name': name_receive})
 
     return jsonify({'result': 'success', 'msg': '🎉 회원 가입을 축하합니다 🎉'})
 
