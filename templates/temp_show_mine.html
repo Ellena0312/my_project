@@ -4,18 +4,108 @@
 {% block section %}
 
 <section>
-    <aside>aside</aside>
-    <article class="show_article">
-        <div class="card">card</div>
-        <div class="card">card</div>
-        <div class="card">card</div>
-        <div class="card">card</div>
-        <div class="card">card</div>
-        <div class="card">card</div>
-        <div class="card">card</div>
-        <div class="card">card</div>
-        <div class="card">card</div>
-        <div class="card">card</div>
+    <aside>
+        <h4> My friends'</h4>
+        <h5> Wish List </h5>
+        <button type="button" class="btn btn-light">Add friend</button>
+        <button type="button" class="btn btn-light">Delete friend</button>
+        <!--                위의 두 버튼 안쪽 글씨 크기를 바꾸고 싶은데 잘 안됩니다..ㅠㅠ-->
+        <a href="" class="name_list">- 임도형 -</a>
+        <a href="" class="name_list">- 최예람 -</a>
+        <a href="" class="name_list">- 최아영 -</a>
+        <!--                여기에 db에서 가져온 친구 목록을 불러오려고 합니다..!-->
+    </aside>
+    <article class="bg">
+        <div class="title-area">
+            <h1>My Wish List</h1>
+        </div>
+        <div class="button_area">
+            <h6>wish list </h6>
+            <button onclick="add_list()" id="add_button" type="button" class="btn btn-outline-light">추가</button>
+            <button type="button" class="btn btn-outline-light">삭제</button>
+        </div>
+        <div class="subtitle-area">
+            <h1> 당신의 위시리스트는 얼마나 채워져있나요? </h1>
+            <h1> 소중한 사람들이 바랬던 선물을 해보세요.</h1>
+        </div>
+        <div id="post-box-area" class="form-post" style="display:none">
+            <div id="post-box-left">
+                <div class="form-group">
+                    <label for="post-name">제품 이름</label> <input id="post-name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="post-price">제품 가격</label> <input id="post-price" class="form-control">
+                </div>
+                <div>
+                    <label id="post-rank-label" for="post-rank">제품 순위</label>
+                    <select id="post-rank">
+                        <option selected>Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <!--                                                    여기서 가지고 있는 위시리스트 제품 개수 만큼 선택지를 주고 싶은데 잘 안돼요..ㅠㅠ-->
+                    </select>
+                </div>
+            </div>
+            <div id="post-box-right">
+                <div class="form-group">
+                    <label for="post-url">제품 URL</label>
+                    <input id="post-url" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="post-comment">간단 코멘트</label>
+                    <textarea id="post-comment" class="form-control" rows="2"></textarea>
+                </div>
+            </div>
+            <button type="button" class="btn btn-light">위시리스트에 추가</button>
+        </div>
+        <div class="card-area">
+            <div class="card" style="width: 18rem;">
+                <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">제품 이름</h5>
+                    <p class="card-text">제품 코멘트</p>
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-light">good</button>
+                    <button type="button" class="btn btn-light">bad</button>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">제품 이름</h5>
+                    <p class="card-text">제품 코멘트</p>
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-light">good</button>
+                    <button type="button" class="btn btn-light">bad</button>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">제품 이름</h5>
+                    <p class="card-text">제품 코멘트</p>
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-light">good</button>
+                    <button type="button" class="btn btn-light">bad</button>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">제품 이름</h5>
+                    <p class="card-text">제품 코멘트</p>
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-light">good</button>
+                    <button type="button" class="btn btn-light">bad</button>
+                </div>
+            </div>
+        </div>
+
     </article>
 </section>
 
@@ -24,64 +114,169 @@
 <!-- style -->
 {% block style %}
 <style>
+    * {
+        font-family: 'Noto Serif KR', serif;
+    }
+
     section {
-        height: 92%;
+        height: calc(100vh - 64px);
         display: flex;
-        flex-direction: row; /* 생략해고 row*/
+        flex-direction: row;
+
     }
 
     aside {
-        width: 250px;
+        width: 200px;
+        background-color: rgb(19% 17% 20%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    aside h4 {
+        font-family: 'Tangerine', cursive;
+        font-size: 45px;
+        color: honeydew;
+    }
+
+    aside h5 {
+        font-family: 'Tangerine', cursive;
+        font-size: 60px;
+        color: honeydew;
+        margin: 0 0 20px 0;
+    }
+
+    aside button {
+        font-size: 8px;
+        /*왜 이건 적용이 안될까요...? */
+        margin: 10px 0 10px 0;
+        width: 90px;
+        height: 20px;
+    }
+
+    aside .name_list {
+        margin: 10px 0 10px 0;
+        color: honeydew;
+    }
+
+    aside .name_list:hover {
+        margin: 10px 0 10px 0;
+        color: peachpuff;
+        text-decoration: none;
+    }
+
+    .bg {
+        width: calc(100vw - 200px);
+        height: calc(100vh - 64px);
+        background-image: url("../static/mywishlist_bg.jpg");
+        background-size: cover;
+        background-position: right;
     }
 
     article {
-        width: calc(100vw - 250px);
+        width: calc(100vw - 200px);
+        overflow: auto;
+    }
+
+    article .title-area {
+        height: 120px;
+        font-family: 'Tangerine', cursive;
+        display: flex;
+        flex-direction: column;
+        justify-content: right;
+        align-items: flex-end;
+        margin: 10% 5% 0 0;
+    }
+
+    article .title-area h1 {
+        font-size: 150px;
+        color: honeydew;
+    }
+
+    article .button_area {
+        height: 70px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 1% 5% 0 0;
+    }
+
+    article .button_area h6 {
+        color: lightgray;
+        font-size: 15px;
+        align-items: end;
+        margin: 0 0.8% 0 0;
+    }
+
+    article .button_area button {
+        color: lightgray;
+        width: 45px;
+        height: 25px;
+        font-size: 12px;
+        align-items: center;
+        /* 왜 글자가 버튼 가운데로 정렬이 안될까요..?ㅠㅠ*/
+        margin: 0 0.5% 0 0;
+    }
+
+    article .subtitle-area {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        color: honeydew;
+        margin: 3% 5% 5% 0;
+    }
+
+    article .subtitle-area h1 {
+        font-size: 18px;
+        margin: 0 0 1% 0;
+    }
+
+    article .card-area {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        overflow: auto;
         justify-content: space-evenly;
     }
 
-    * {
-        font-family: 'Gaegu', cursive;
-        width: 100%;
-        height: 100%;
-    }
-
-    .nav_title {
-        font-size: 45px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .show_article {
-        background-image: url("../static/mywishlist_show.jpg");
-        background-size: cover;
-        background-position: center;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .buttons {
-        width: 5%;
-        height: 5%;
-        position: fixed;
-        bottom: 140px;
-        right: 340px;
-    }
-
-    .card {
-        width: 200px;
-        height: 200px;
+    article .card-area .card {
+        width: 150px;
+        height: 450px;
         background-color: white;
-        margin: 10px;
+        /*margin: 10px;*/
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    article #post-box-area {
+        width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border: honeydew dashed;
+        border-radius: 5px;
+        color: honeydew;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    article #post-box-area #post-box-left {
+        width: 400px;
+        flex-direction: column;
+    }
+
+    article #post-box-area #post-box-right {
+        flex-direction: column;
+    }
+
+
+    #post-box-area #post-rank {
+        border-radius: 5px;
     }
 
 </style>
@@ -92,15 +287,33 @@
 <script>
     $(document).ready(function () {
         // getUserNickname()
-        let nickname = "{{ user['nick'] }}"
-        alert(`${nickname}님 반갑습니다 👋`)
+        let name = "{{ user['name'] }}"
+        alert(`${name}님 반갑습니다 👋`)
     });
 
     function signOut() {
         // 쿠키 삭제
+        let name = "{{ user['name'] }}"
+        alert(`${name}님 안녕히가세요 👋`)
         $.removeCookie('token_give')
-        alert('Sign Out! 👋')
         location.href = '/login'
     }
+
+    function add_list() {
+        // id 값 post-box의 display 값이 block 이면(= 눈에 보이면)
+        if ($("#post-box").css("display") == "block") {
+            // post-box를 가리고
+            $("#post-box").hide();
+            // 다시 버튼을 클릭하면, 박스 열기를 할 수 있게 텍스트 바꿔두기
+            $("#add_button").text("추가");
+        } else {
+            // 아니면(눈에 보이지 않으면) post-box를 펴라
+            $("#post-box").show();
+            // 다시 버튼을 클릭하면, 박스 닫기를 할 수 있게 텍스트 바꿔두기
+            $("#add_button").text("닫기");
+        }
+    }
+
+
 </script>
 {% endblock %}
