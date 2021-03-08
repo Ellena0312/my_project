@@ -29,38 +29,34 @@
             <h1> 소중한 사람들이 바랬던 선물을 해보세요.</h1>
         </div>
         <div id="post-box-area" class="form-post" style="display:none">
-            <div id="post-box-left">
-                <div class="form-group">
-                    <label for="post-name">제품 이름</label> <input id="post-name" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="post-price">제품 가격</label> <input id="post-price" class="form-control">
-                </div>
-                <div>
-                    <label id="post-rank-label" for="post-rank">제품 순위</label>
-                    <select id="post-rank">
-                        <option selected>Choose...</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <!--                                                    여기서 가지고 있는 위시리스트 제품 개수 만큼 선택지를 주고 싶은데 잘 안돼요..ㅠㅠ-->
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="post-name">제품 이름</label> <input id="post-name" class="form-control">
             </div>
-            <div id="post-box-right">
-                <div class="form-group">
-                    <label for="post-url">제품 URL</label>
-                    <input id="post-url" class="form-control" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="post-comment">간단 코멘트</label>
-                    <textarea id="post-comment" class="form-control" rows="2"></textarea>
-                </div>
+            <div class="form-group">
+                <label for="post-price">제품 가격</label> <input id="post-price" class="form-control">
+            </div>
+            <div>
+                <label id="post-rank-label" for="post-rank">제품 순위</label>
+                <select id="post-rank">
+                    <option selected>Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <!--   여기서 가지고 있는 위시리스트 제품 개수 만큼 선택지를 주고 싶은데 잘 안돼요..ㅠㅠ-->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="post-url">제품 URL</label>
+                <input id="post-url" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="post-comment">간단 코멘트</label>
+                <textarea id="post-comment" class="form-control" rows="2"></textarea>
             </div>
             <button type="button" class="btn btn-light">위시리스트에 추가</button>
         </div>
         <div class="card-area">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">제품 이름</h5>
@@ -71,7 +67,7 @@
                     <button type="button" class="btn btn-light">bad</button>
                 </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">제품 이름</h5>
@@ -82,7 +78,7 @@
                     <button type="button" class="btn btn-light">bad</button>
                 </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">제품 이름</h5>
@@ -93,7 +89,7 @@
                     <button type="button" class="btn btn-light">bad</button>
                 </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">제품 이름</h5>
@@ -239,11 +235,12 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-evenly;
+        margin: 10% 0 0 0;
     }
 
     article .card-area .card {
-        width: 150px;
-        height: 450px;
+        width: 190px;
+        height: 190px;
         background-color: white;
         /*margin: 10px;*/
         display: flex;
@@ -252,31 +249,40 @@
         align-items: center;
     }
 
+    article .card-area .card .card-img-top {
+        width: 190px;
+        height: 190px;
+    }
+
+
     article #post-box-area {
-        width: 800px;
+        width: 500px;
         margin: 20px auto;
         padding: 20px;
-        border: honeydew dashed;
+        border: honeydew solid 1px;
         border-radius: 5px;
         color: honeydew;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    article #post-box-area #post-box-left {
-        width: 400px;
-        flex-direction: column;
+    #post-box-area #post-rank-label {
+        margin: 0 0 0 0;
     }
-
-    article #post-box-area #post-box-right {
-        flex-direction: column;
-    }
-
 
     #post-box-area #post-rank {
+        width: 260px;
+        height: 40px;
         border-radius: 5px;
+        margin: 0 0 8% 0;
+    }
+
+    #post-box-area #post-comment {
+        width: 260px;
+        border-radius: 5px;
+        margin: 0 0 8% 0;
     }
 
 </style>
@@ -301,14 +307,14 @@
 
     function add_list() {
         // id 값 post-box의 display 값이 block 이면(= 눈에 보이면)
-        if ($("#post-box").css("display") == "block") {
+        if ($("#post-box-area").css("display") == "flex") {
             // post-box를 가리고
-            $("#post-box").hide();
+            $("#post-box-area").hide();
             // 다시 버튼을 클릭하면, 박스 열기를 할 수 있게 텍스트 바꿔두기
             $("#add_button").text("추가");
         } else {
             // 아니면(눈에 보이지 않으면) post-box를 펴라
-            $("#post-box").show();
+            $("#post-box-area").show();
             // 다시 버튼을 클릭하면, 박스 닫기를 할 수 있게 텍스트 바꿔두기
             $("#add_button").text("닫기");
         }
