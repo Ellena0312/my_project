@@ -22,7 +22,7 @@
         <div class="button_area">
             <h6>wish list </h6>
             <button onclick="add_list()" id="add_button" type="button" class="btn btn-outline-light">추가</button>
-            <button onclick="delete_list()" type="button" class="btn btn-outline-light">삭제</button>
+            <button onclick="delete_list()" id="delete_button" type="button" class="btn btn-outline-light">삭제</button>
         </div>
         <div class="subtitle-area">
             <h1> 당신의 위시리스트는 얼마나 채워져있나요? </h1>
@@ -48,8 +48,18 @@
                 <label for="post-comment">간단 코멘트</label>
                 <textarea id="post-comment" class="form-control" rows="2"></textarea>
             </div>
-            <button id="add_list_button" type="button" class="btn btn-light" onclick="postList()">Add to Wish List
-            </button>
+            <button id="add_list_button" type="button" class="btn btn-light" onclick="postList()">Add</button>
+        </div>
+        <div id="delete-post-box-area" class="form-post" style="display:none">
+            <p class="delete-post-box-title">Delete Object</p>
+            <p class="delete-post-box-subtitle">위시리스트의 제품을 삭제할 수 있습니다.</p>
+            <div class="form-group">
+                <label for="delete-post-name">제품 이름</label> <input id="delete-post-name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="delete-post-rank">제품 순위</label> <input id="delete-post-rank" class="form-control">
+            </div>
+            <button id="delete_list_button" type="button" class="btn btn-light" onclick="removeList()">Delete</button>
         </div>
         <div id="card-area">
             <div class="card">
@@ -380,6 +390,46 @@
         margin: 0 0 8% 0;
     }
 
+    article #delete-post-box-area {
+        width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        /*border: transparent solid 1px;*/
+        /*border: rgb(19% 17% 20%) solid 1px;*/
+        border-radius: 5px;
+        /*background: -webkit-linear-gradient( white, rgb(19% 17% 20%));*/
+        /*background: -o-linear-gradient(white, rgb(19% 17% 20%));*/
+        /*background: -moz-linear-gradient(white, rgb(19% 17% 20%));*/
+        background: linear-gradient(rgb(19% 17% 20%), rgb(20% 20% 20%));
+        /*background-color: rgb(19% 17% 20%);*/
+        /*background-color: white;*/
+        color: honeydew;
+        /*color: rgb(19% 17% 20%);*/
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    article #delete-post-box-area .delete-post-box-title {
+        font-family: 'Tangerine', cursive;
+        font-size: 80px;
+    }
+
+    article #delete-post-box-area .delete-post-box-subtitle {
+        font-size: 13px;
+        margin: -5% 0 10% 0;
+    }
+
+
+    article #delete-post-box-area #delete_list_button {
+        height: 30px;
+        padding: 4px 8px 8px 8px;
+        font-family: 'Tangerine', cursive;
+        font-weight: 700;
+        font-size: 20px;
+    }
+
 </style>
 {% endblock %}
 
@@ -417,17 +467,17 @@
     }
 
     function delete_list() {
-        // id 값 post-box의 display 값이 block 이면(= 눈에 보이면)
-        if ($("#post-box-area").css("display") == "flex") {
-            // post-box를 가리고
-            $("#post-box-area").hide();
+        // id 값 delete-post-box의 display 값이 block 이면(= 눈에 보이면)
+        if ($("#delete-post-box-area").css("display") == "flex") {
+            // delete-post-box를 가리고
+            $("#delete-post-box-area").hide();
             // 다시 버튼을 클릭하면, 박스 열기를 할 수 있게 텍스트 바꿔두기
-            $("#add_button").text("추가");
+            $("#delete_button").text("삭제");
         } else {
             // 아니면(눈에 보이지 않으면) post-box를 펴라
-            $("#post-box-area").show();
+            $("#delete-post-box-area").show();
             // 다시 버튼을 클릭하면, 박스 닫기를 할 수 있게 텍스트 바꿔두기
-            $("#add_button").text("닫기");
+            $("#delete_button").text("닫기");
         }
     }
 
@@ -512,9 +562,11 @@
                             </div>
                         </div>`;
         $("#card-area").append(tempHtml);
-
     }
 
+    function removeList() {
+
+    }
 
 </script>
 {% endblock %}
