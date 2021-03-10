@@ -13,8 +13,8 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for, g
 app = Flask(__name__)
 
 # mongodb
-client = MongoClient('localhost', 27017)
-# client = MongoClient('mongodb://test:test@localhost',27017)
+# client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb://test:test@localhost',27017)
 db = client.dbsparta
 
 # jwt secret key
@@ -147,9 +147,22 @@ def post_list():
     og_title = soup.select_one('meta[property="og:title"]')
     og_description = soup.select_one('meta[property="og:description"]')
 
-    url_title = og_title['content']
-    url_description = og_description['content']
-    url_image = og_image['content']
+    # url_title = og_title['content']
+    # url_description = og_description['content']
+    # url_image = og_image['content']
+
+    if og_title is not None:
+        url_title = og_title['content']
+    else:
+        url_title = 'og tag가 없습니다.'
+    if og_image is not None:
+        url_image = og_image['content']
+    else:
+        url_image = 'https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png'
+    if og_image is not None:
+        url_description = og_description['content']
+    else:
+        url_description = 'og desc가 없습니다.'
 
     wish_list = {'user': user_receive,
                  'name': name_receive,
@@ -173,9 +186,10 @@ def post_list():
 # db에서 리스트 가져오기
 @app.route('/memo_list', methods=['GET'])
 def read_list():
-    user_receive = request.form['user_give']
+    # user_receive = request.form['user_give']
+    user_receive = request.args.get('user_give')
     # 1. mongoDB에서 user가 user_receive와 같은 모든 데이터 조회해오기 (Read)
-    result = list(db.wish_note_list.find({'user': user_receive}))
+    result = list(db.wish_note_list.find({'user': user_receive}, {'_id': False}))
     # 2. wish_list라는 키 값으로 wish_note_list 정보 보내주기
     return jsonify({'result': 'success', 'wish_list': result})
 

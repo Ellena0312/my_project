@@ -22,13 +22,15 @@
         <div class="button_area">
             <h6>wish list </h6>
             <button onclick="add_list()" id="add_button" type="button" class="btn btn-outline-light">추가</button>
-            <button type="button" class="btn btn-outline-light">삭제</button>
+            <button onclick="delete_list()" type="button" class="btn btn-outline-light">삭제</button>
         </div>
         <div class="subtitle-area">
             <h1> 당신의 위시리스트는 얼마나 채워져있나요? </h1>
             <h1> 소중한 사람들이 바랬던 선물을 해보세요.</h1>
         </div>
         <div id="post-box-area" class="form-post" style="display:none">
+            <p class="post-box-title">Add Object</p>
+            <p class="post-box-subtitle">위시리스트에 제품을 추가해보세요.</p>
             <div class="form-group">
                 <label for="post-name">제품 이름</label> <input id="post-name" class="form-control">
             </div>
@@ -46,7 +48,8 @@
                 <label for="post-comment">간단 코멘트</label>
                 <textarea id="post-comment" class="form-control" rows="2"></textarea>
             </div>
-            <button type="button" class="btn btn-light" onclick="postList()">위시리스트에 추가</button>
+            <button id="add_list_button" type="button" class="btn btn-light" onclick="postList()">Add to Wish List
+            </button>
         </div>
         <div id="card-area">
             <div class="card">
@@ -265,7 +268,6 @@
         width: 45px;
         height: 25px;
         font-size: 10px;
-    !important;
         align-items: center;
         margin: 0 0.5% 0 0;
         padding: 0;
@@ -286,11 +288,12 @@
     }
 
     article #card-area {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 200px);
         justify-content: space-evenly;
-        margin: 10% 0 0 0;
+        margin: 13% 5% 10% 5%;
+        gap: 50px 50px;
+        grid-auto-rows: 500px;
     }
 
     article #card-area .card {
@@ -301,7 +304,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 0% 3% 15% 3%;
     }
 
     article #card-area .card .rank {
@@ -332,18 +334,44 @@
         margin: 0;
     }
 
-
     article #post-box-area {
         width: 500px;
         margin: 20px auto;
         padding: 20px;
-        border: honeydew solid 1px;
+        /*border: transparent solid 1px;*/
+        /*border: rgb(19% 17% 20%) solid 1px;*/
         border-radius: 5px;
+        /*background: -webkit-linear-gradient( white, rgb(19% 17% 20%));*/
+        /*background: -o-linear-gradient(white, rgb(19% 17% 20%));*/
+        /*background: -moz-linear-gradient(white, rgb(19% 17% 20%));*/
+        background: linear-gradient(rgb(19% 17% 20%), rgb(20% 20% 20%));
+        /*background-color: rgb(19% 17% 20%);*/
+        /*background-color: white;*/
         color: honeydew;
+        /*color: rgb(19% 17% 20%);*/
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    article #post-box-area .post-box-title {
+        font-family: 'Tangerine', cursive;
+        font-size: 80px;
+    }
+
+    article #post-box-area .post-box-subtitle {
+        font-size: 13px;
+        margin: -5% 0 10% 0;
+    }
+
+
+    article #post-box-area #add_list_button {
+        height: 30px;
+        padding: 4px 8px 8px 8px;
+        font-family: 'Tangerine', cursive;
+        font-weight: 700;
+        font-size: 20px;
     }
 
     #post-box-area #post-comment {
@@ -413,10 +441,11 @@
 
         if (name === '') return alert('제품의 이름을 입력해주세요')
         if (price === '') return alert('제품의 가격을 입력해주세요')
-        if (typeof (price) != number) return alert('제품의 가격을 숫자로 입력해주세요')
+        if (isNaN(price)) return alert('제품의 가격을 숫자로 입력해주세요')
         if (rank === '') return alert('제품의 순위를 입력해주세요')
-        if (typeof (rank) != number) return alert('제품의 순위를 숫자로 입력해주세요')
+        if (isNaN(price)) return alert('제품의 순위를 숫자로 입력해주세요')
         if (url === '') return alert('url을 입력해주세요')
+        if (!/(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi.test(url)) return alert('url을 올바르게 입력해주세요')
         if (comment === '') return alert('comment를 입력해주세요')
 
         // 2. memo_list에 POST 방식으로 메모 생성 요청하기
