@@ -86,7 +86,7 @@
         border: 2px solid black;
         border-radius: 5px;
         margin: 0 0 5px 2px;
-        background-color: rgba(255 255 255 0.1);
+        background-color: rgba(255 255 255 0.1) !important;
         /*color: white;*/
         height: 40px;
         width: 80%;
@@ -127,7 +127,11 @@
         $.ajax({
             type: "POST",
             url: "/api/register",
-            data: {id_give: id, pw_give: pw, name_give: name},
+            data: {
+                id_give: id,
+                pw_give: pw,
+                name_give: name,
+                address_give: address},
             success: function (response) {
                 if (response['result'] === 'success') {
                     alert('🎉 Sign up is complete 🎉')

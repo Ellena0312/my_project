@@ -35,15 +35,8 @@
             <div class="form-group">
                 <label for="post-price">제품 가격</label> <input id="post-price" class="form-control">
             </div>
-            <div>
-                <label id="post-rank-label" for="post-rank">제품 순위</label>
-                <select id="post-rank">
-                    <option selected>Choose...</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <!--   여기서 가지고 있는 위시리스트 제품 개수 만큼 선택지를 주고 싶은데 잘 안돼요..ㅠㅠ-->
-                </select>
+            <div class="form-group">
+                <label for="post-rank">제품 순위</label> <input id="post-rank" class="form-control">
             </div>
             <div class="form-group">
                 <label for="post-url">제품 URL</label>
@@ -53,13 +46,15 @@
                 <label for="post-comment">간단 코멘트</label>
                 <textarea id="post-comment" class="form-control" rows="2"></textarea>
             </div>
-            <button type="button" class="btn btn-light">위시리스트에 추가</button>
+            <button type="button" class="btn btn-light" onclick="postList()">위시리스트에 추가</button>
         </div>
-        <div class="card-area">
+        <div id="card-area">
             <div class="card">
                 <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
+                    <p class="rank">- 1 -</p>
                     <h5 class="card-title">제품 이름</h5>
+                    <p class="card-text">제품 가격</p>
                     <p class="card-text">제품 코멘트</p>
                 </div>
                 <div class="card-body">
@@ -70,7 +65,9 @@
             <div class="card">
                 <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
+                    <p class="rank">- 2 -</p>
                     <h5 class="card-title">제품 이름</h5>
+                    <p class="card-text">제품 가격</p>
                     <p class="card-text">제품 코멘트</p>
                 </div>
                 <div class="card-body">
@@ -81,7 +78,9 @@
             <div class="card">
                 <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
+                    <p class="rank">- 3 -</p>
                     <h5 class="card-title">제품 이름</h5>
+                    <p class="card-text">제품 가격</p>
                     <p class="card-text">제품 코멘트</p>
                 </div>
                 <div class="card-body">
@@ -92,7 +91,9 @@
             <div class="card">
                 <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
+                    <p class="rank">- 4 -</p>
                     <h5 class="card-title">제품 이름</h5>
+                    <p class="card-text">제품 가격</p>
                     <p class="card-text">제품 코멘트</p>
                 </div>
                 <div class="card-body">
@@ -100,6 +101,59 @@
                     <button type="button" class="btn btn-light">bad</button>
                 </div>
             </div>
+            <div class="card">
+                <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="rank">- 5 -</p>
+                    <h5 class="card-title">제품 이름</h5>
+                    <p class="card-text">제품 가격</p>
+                    <p class="card-text">제품 코멘트</p>
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-light">good</button>
+                    <button type="button" class="btn btn-light">bad</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="rank">- 6 -</p>
+                    <h5 class="card-title">제품 이름</h5>
+                    <p class="card-text">제품 가격</p>
+                    <p class="card-text">제품 코멘트</p>
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-light">good</button>
+                    <button type="button" class="btn btn-light">bad</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="rank">- 7 -</p>
+                    <h5 class="card-title">제품 이름</h5>
+                    <p class="card-text">제품 가격</p>
+                    <p class="card-text">제품 코멘트</p>
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-light">good</button>
+                    <button type="button" class="btn btn-light">bad</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="rank">- 8 -</p>
+                    <h5 class="card-title">제품 이름</h5>
+                    <p class="card-text">제품 가격</p>
+                    <p class="card-text">제품 코멘트</p>
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-light">good</button>
+                    <button type="button" class="btn btn-light">bad</button>
+                </div>
+            </div>
+
         </div>
 
     </article>
@@ -144,8 +198,8 @@
     }
 
     aside button {
-        font-size: 8px;
-        /*왜 이건 적용이 안될까요...? */
+        font-size: 6px !important;
+        padding: 0 !important;
         margin: 10px 0 10px 0;
         width: 90px;
         height: 20px;
@@ -210,10 +264,11 @@
         color: lightgray;
         width: 45px;
         height: 25px;
-        font-size: 12px;
+        font-size: 10px;
+    !important;
         align-items: center;
-        /* 왜 글자가 버튼 가운데로 정렬이 안될까요..?ㅠㅠ*/
         margin: 0 0.5% 0 0;
+        padding: 0;
     }
 
     article .subtitle-area {
@@ -230,7 +285,7 @@
         margin: 0 0 1% 0;
     }
 
-    article .card-area {
+    article #card-area {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -238,20 +293,43 @@
         margin: 10% 0 0 0;
     }
 
-    article .card-area .card {
+    article #card-area .card {
         width: 190px;
-        height: 190px;
+        height: 300px;
         background-color: white;
-        /*margin: 10px;*/
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin: 0% 3% 15% 3%;
     }
 
-    article .card-area .card .card-img-top {
+    article #card-area .card .rank {
+        justify-content: center;
+        font-size: 30px;
+        font-weight: 400;
+        margin: 0 0 15% 20%;
+    }
+
+    article #card-area .card .card-body {
+        justify-content: center;
+        align-items: center;
+        margin: 0 0 0 0;
+    }
+
+    article #card-area .card .card-body .card-title {
+        margin: 0 0 25% 0;
+    }
+
+    article #card-area .card .card-body .card-text {
+        font-size: 13px;
+        margin: 10% 0 0 0;
+    }
+
+    article #card-area .card .card-img-top {
         width: 190px;
         height: 190px;
+        margin: 0;
     }
 
 
@@ -268,17 +346,6 @@
         align-items: center;
     }
 
-    #post-box-area #post-rank-label {
-        margin: 0 0 0 0;
-    }
-
-    #post-box-area #post-rank {
-        width: 260px;
-        height: 40px;
-        border-radius: 5px;
-        margin: 0 0 8% 0;
-    }
-
     #post-box-area #post-comment {
         width: 260px;
         border-radius: 5px;
@@ -293,14 +360,15 @@
 <script>
     $(document).ready(function () {
         // getUserNickname()
-        let name = "{{ user['name'] }}"
-        alert(`${name}님 반갑습니다 👋`)
+        let user = "{{ user['name'] }}"
+        alert(`${user}님 반갑습니다 👋`)
+        showList();
     });
 
     function signOut() {
         // 쿠키 삭제
-        let name = "{{ user['name'] }}"
-        alert(`${name}님 안녕히가세요 👋`)
+        let user = "{{ user['name'] }}"
+        alert(`${user}님 안녕히가세요 👋`)
         $.removeCookie('token_give')
         location.href = '/login'
     }
@@ -318,6 +386,104 @@
             // 다시 버튼을 클릭하면, 박스 닫기를 할 수 있게 텍스트 바꿔두기
             $("#add_button").text("닫기");
         }
+    }
+
+    function delete_list() {
+        // id 값 post-box의 display 값이 block 이면(= 눈에 보이면)
+        if ($("#post-box-area").css("display") == "flex") {
+            // post-box를 가리고
+            $("#post-box-area").hide();
+            // 다시 버튼을 클릭하면, 박스 열기를 할 수 있게 텍스트 바꿔두기
+            $("#add_button").text("추가");
+        } else {
+            // 아니면(눈에 보이지 않으면) post-box를 펴라
+            $("#post-box-area").show();
+            // 다시 버튼을 클릭하면, 박스 닫기를 할 수 있게 텍스트 바꿔두기
+            $("#add_button").text("닫기");
+        }
+    }
+
+    function postList() {
+        let user = "{{ user['name'] }}"
+        let name = $("#post-name").val();
+        let price = $("#post-price").val();
+        let rank = $("#post-rank").val();
+        let url = $("#post-url").val();
+        let comment = $("#post-comment").val();
+
+        if (name === '') return alert('제품의 이름을 입력해주세요')
+        if (price === '') return alert('제품의 가격을 입력해주세요')
+        if (typeof (price) != number) return alert('제품의 가격을 숫자로 입력해주세요')
+        if (rank === '') return alert('제품의 순위를 입력해주세요')
+        if (typeof (rank) != number) return alert('제품의 순위를 숫자로 입력해주세요')
+        if (url === '') return alert('url을 입력해주세요')
+        if (comment === '') return alert('comment를 입력해주세요')
+
+        // 2. memo_list에 POST 방식으로 메모 생성 요청하기
+        $.ajax({
+            type: "POST", // POST 방식으로 요청하겠다.
+            url: "/memo_list", // /memo_list라는 url에 요청하겠다.
+            data: {
+                user_give: user,
+                name_give: name,
+                price_give: price,
+                rank_give: rank,
+                url_give: url,
+                comment_give: comment
+            }, // 데이터를 주는 방법
+            success: function (response) { // 성공하면
+                if (response["result"] == "success") {
+                    //alert("포스팅 성공!");
+                    // 3. 성공 시 페이지 새로고침하기
+                    window.location.reload();
+                } else {
+                    alert("서버 오류!");
+                }
+            }
+        })
+    }
+
+    function showList() {
+        let user = "{{ user['name'] }}"
+
+        $.ajax({
+            type: "GET",
+            url: "/memo_list",
+            data: {user_give: user},
+            success: function (response) {
+                let wish_list = response["wish_list"];
+                console.log(wish_list);
+                for (let i = 1; i < wish_list.length; i++) {
+                    for (let j = 0; j < wish_list.length; j++) {
+                        if (wish_list[j]["rank"] == i) {
+                            makeCard(wish_list[j]["name"],
+                                wish_list[j]["price"],
+                                wish_list[j]["comment"],
+                                wish_list[j]["rank"],
+                                wish_list[j]["image"]);
+                        }
+                    }
+                }
+            }
+        })
+    }
+
+    function makeCard(name, price, comment, rank, image) {
+        let tempHtml = `<div class="card">
+                            <img src="${image}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="rank">- ${rank} -</p>
+                                <h5 class="card-title">${name}</h5>
+                                <p class="card-text">${price}원</p>
+                                <p class="card-text">${comment}</p>
+                            </div>
+                            <div class="card-body">
+                                <button type="button" class="btn btn-light">good</button>
+                                <button type="button" class="btn btn-light">bad</button>
+                            </div>
+                        </div>`;
+        $("#card-area").append(tempHtml);
+
     }
 
 

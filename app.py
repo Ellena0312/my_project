@@ -3,7 +3,9 @@
 import jwt
 import datetime
 import hashlib
+import requests
 from functools import wraps
+from bs4 import BeautifulSoup
 from pymongo import MongoClient
 from flask import Flask, render_template, jsonify, request, redirect, url_for, g
 
@@ -80,6 +82,7 @@ def api_register():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
     name_receive = request.form['name_give']
+    address_receive = request.form['address_give']
 
     # id 중복 확인
     user = db.wish_note_user.find_one({'id': id_receive})
@@ -89,7 +92,10 @@ def api_register():
     # pw를 sha256 방법(단방향)으로 암호화
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
-    db.wish_note_user.insert_one({'id': id_receive, 'pw': pw_hash, 'name': name_receive})
+    db.wish_note_user.insert_one({'id': id_receive,
+                                  'pw': pw_hash,
+                                  'name': name_receive,
+                                  'address': address_receive})
 
     return jsonify({'result': 'success', 'msg': '회원 가입을 축하합니다'})
 
@@ -119,6 +125,59 @@ def api_login():
     else:
         return jsonify({'result': 'fail', 'msg': '아이디와 비밀번호를 확인해주세요'})
 
+
+# db에 리스트 넣기
+@app.route('/memo_list', methods=['POST'])
+def post_list():
+    # 1. 클라이언트로부터 데이터를 받기
+    user_receive = request.form['user_give']
+    name_receive = request.form['name_give']
+    price_receive = request.form['price_give']
+    rank_receive = request.form['rank_give']
+    url_receive = request.form['url_give']  # 클라이언트로부터 url을 받는 부분
+    comment_receive = request.form['comment_give']  # 클라이언트로부터 comment를 받는 부분
+
+    # 2. meta tag를 스크래핑하기
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+    data = requests.get(url_receive, headers=headers)
+    soup = BeautifulSoup(data.text, 'html.parser')
+
+    og_image = soup.select_one('meta[property="og:image"]')
+    og_title = soup.select_one('meta[property="og:title"]')
+    og_description = soup.select_one('meta[property="og:description"]')
+
+    url_title = og_title['content']
+    url_description = og_description['content']
+    url_image = og_image['content']
+
+    wish_list = {'user': user_receive,
+                 'name': name_receive,
+                 'price': price_receive,
+                 'rank': rank_receive,
+                 'comment': comment_receive,
+                 'url': url_receive,
+                 'title': url_title,
+                 'desc': url_description,
+                 'image': url_image}
+
+    # 3. mongoDB에 데이터를 넣기
+    # user_check = db.wish_note_list.find_one({'user': user_receive})
+    # if user_check is not None:
+    #     return
+    # else:
+    db.wish_note_list.insert_one(wish_list)
+    return jsonify({'result': 'success'})
+
+
+# db에서 리스트 가져오기
+@app.route('/memo_list', methods=['GET'])
+def read_list():
+    user_receive = request.form['user_give']
+    # 1. mongoDB에서 user가 user_receive와 같은 모든 데이터 조회해오기 (Read)
+    result = list(db.wish_note_list.find({'user': user_receive}))
+    # 2. wish_list라는 키 값으로 wish_note_list 정보 보내주기
+    return jsonify({'result': 'success', 'wish_list': result})
 
 
 if __name__ == '__main__':
