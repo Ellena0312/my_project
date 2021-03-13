@@ -49,9 +49,9 @@
 
     .bg .sign-up-area {
         color: honeydew;
-        position: fixed;
+        position: absolute;
         right: 15%;
-        bottom: 60%;
+        bottom: 20%;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -60,132 +60,138 @@
     .bg .sign-up-area h1 {
         font-family: 'Tangerine', cursive;
         font-size: 135px;
-        margin: 10% 0 0 0;
     }
 
     .bg .sign-up-area h2 {
         font-size: 35px;
         font-family: 'Tangerine', cursive;
         color: beige;
-        position: fixed;
-        right: 15%;
-        bottom: 58%;
+        margin: -7% 0 0 0;
     }
 
     .input-button-wrap {
-        width: 30%;
-        position: fixed;
-        left: 55%;
-        bottom: 10%;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
-
+        margin: 10% 0 -10% 0;
     }
 
-    .input-button-wrap .label_name {
-        position: fixed;
-        left: 55%;
-        bottom: 42%;
-    }
-
-    .input-button-wrap .label_id {
-        position: fixed;
-        left: 55%;
-        bottom: 36%;
-    }
-
-    .input-button-wrap .label_pw {
-        position: fixed;
-        left: 55%;
-        bottom: 30%;
-    }
-
-    .input-button-wrap .label_pw_check {
-        position: fixed;
-        left: 55%;
-        bottom: 24%;
-    }
-
-    .input-button-wrap .label_address {
-        position: fixed;
-        left: 55%;
-        bottom: 18%;
-    }
-
-    .input-button-wrap .input_style_name {
+    .input-button-wrap input {
         border: 1px solid black;
         border-radius: 5px;
         background-color: rgba(255, 255, 255, 0.1);
         color: white;
-        /*position: relative;*/
-        /*left: 8%;*/
-        position: fixed;
-        right: 15%;
-        bottom: 42%;
         height: 40px;
-        width: 23%;
+        width: 70%;
     }
 
-    .input-button-wrap .input_style_id {
-        border: 1px solid black;
-        border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.1);
-        /*margin: 0 0 5px 0;*/
-        /*position: relative;*/
-        /*left: 14.5%;*/
-        position: fixed;
-        right: 15%;
-        bottom: 36%;
-        color: white;
-        height: 40px;
-        width: 23%;
+    .input-button-wrap label {
+        display: inline-block;
+        width: 400px;
     }
 
-    .input-button-wrap .input_style_pw {
-        border: 1px solid black;
-        border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.1);
-        /*margin: 0 0 5% 0;*/
-        /*position: relative;*/
-        /*left: 1.5%;*/
-        position: fixed;
-        right: 15%;
-        bottom: 30%;
-        color: white;
-        height: 40px;
-        width: 23%;
-    }
+    /*.input-button-wrap .label_name {*/
+    /*    position: fixed;*/
+    /*    left: 55%;*/
+    /*    bottom: 42%;*/
+    /*}*/
 
-    .input-button-wrap .input_style_pw_check {
-        border: 1px solid black;
-        border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.1);
-        /*margin: 0 0 5px 0;*/
-        /*position: relative;*/
-        /*left: 1%;*/
-        position: fixed;
-        right: 15%;
-        bottom: 24%;
-        color: white;
-        height: 40px;
-        width: 23%;
-    }
+    /*.input-button-wrap .label_id {*/
+    /*    position: fixed;*/
+    /*    left: 55%;*/
+    /*    bottom: 36%;*/
+    /*}*/
 
-    .input-button-wrap .input_style_address {
-        border: 1px solid black;
-        border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.1);
-        /*margin: 0 0 5px 0;*/
-        /*position: relative;*/
-        /*left: 4.5%;*/
-        position: fixed;
-        right: 15%;
-        bottom: 18%;
-        color: white;
-        height: 40px;
-        width: 23%;
-    }
+    /*.input-button-wrap .label_pw {*/
+    /*    position: fixed;*/
+    /*    left: 55%;*/
+    /*    bottom: 30%;*/
+    /*}*/
+
+    /*.input-button-wrap .label_pw_check {*/
+    /*    position: fixed;*/
+    /*    left: 55%;*/
+    /*    bottom: 24%;*/
+    /*}*/
+
+    /*.input-button-wrap .label_address {*/
+    /*    position: fixed;*/
+    /*    left: 55%;*/
+    /*    bottom: 18%;*/
+    /*}*/
+
+    /*.input-button-wrap .input_style_name {*/
+    /*    border: 1px solid black;*/
+    /*    border-radius: 5px;*/
+    /*    background-color: rgba(255, 255, 255, 0.1);*/
+    /*    color: white;*/
+    /*    !*position: relative;*!*/
+    /*    !*left: 8%;*!*/
+    /*    position: fixed;*/
+    /*    right: 15%;*/
+    /*    bottom: 42%;*/
+    /*    height: 40px;*/
+    /*    width: 23%;*/
+    /*}*/
+
+    /*.input-button-wrap .input_style_id {*/
+    /*    border: 1px solid black;*/
+    /*    border-radius: 5px;*/
+    /*    background-color: rgba(255, 255, 255, 0.1);*/
+    /*    !*margin: 0 0 5px 0;*!*/
+    /*    !*position: relative;*!*/
+    /*    !*left: 14.5%;*!*/
+    /*    position: fixed;*/
+    /*    right: 15%;*/
+    /*    bottom: 36%;*/
+    /*    color: white;*/
+    /*    height: 40px;*/
+    /*    width: 23%;*/
+    /*}*/
+
+    /*.input-button-wrap .input_style_pw {*/
+    /*    border: 1px solid black;*/
+    /*    border-radius: 5px;*/
+    /*    background-color: rgba(255, 255, 255, 0.1);*/
+    /*    !*margin: 0 0 5% 0;*!*/
+    /*    !*position: relative;*!*/
+    /*    !*left: 1.5%;*!*/
+    /*    position: fixed;*/
+    /*    right: 15%;*/
+    /*    bottom: 30%;*/
+    /*    color: white;*/
+    /*    height: 40px;*/
+    /*    width: 23%;*/
+    /*}*/
+
+    /*.input-button-wrap .input_style_pw_check {*/
+    /*    border: 1px solid black;*/
+    /*    border-radius: 5px;*/
+    /*    background-color: rgba(255, 255, 255, 0.1);*/
+    /*    !*margin: 0 0 5px 0;*!*/
+    /*    !*position: relative;*!*/
+    /*    !*left: 1%;*!*/
+    /*    position: fixed;*/
+    /*    right: 15%;*/
+    /*    bottom: 24%;*/
+    /*    color: white;*/
+    /*    height: 40px;*/
+    /*    width: 23%;*/
+    /*}*/
+
+    /*.input-button-wrap .input_style_address {*/
+    /*    border: 1px solid black;*/
+    /*    border-radius: 5px;*/
+    /*    background-color: rgba(255, 255, 255, 0.1);*/
+    /*    !*margin: 0 0 5px 0;*!*/
+    /*    !*position: relative;*!*/
+    /*    !*left: 4.5%;*!*/
+    /*    position: fixed;*/
+    /*    right: 15%;*/
+    /*    bottom: 18%;*/
+    /*    color: white;*/
+    /*    height: 40px;*/
+    /*    width: 23%;*/
+    /*}*/
 
     .input-button-wrap .sign-up-button {
         margin-top: 1rem;

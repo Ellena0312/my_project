@@ -56,9 +56,6 @@
             <div class="form-group">
                 <label for="delete-post-name">제품 이름</label> <input id="delete-post-name" class="form-control">
             </div>
-            <div class="form-group">
-                <label for="delete-post-rank">제품 순위</label> <input id="delete-post-rank" class="form-control">
-            </div>
             <button id="delete_list_button" type="button" class="btn btn-light" onclick="removeList()">Delete</button>
         </div>
         <div id="card-area">
@@ -560,7 +557,52 @@
     }
 
     function removeList() {
+        let user = "{{ user['name'] }}"
+        let name = $("#delete-post-name").val();
 
+        $.ajax({
+            type: "GET",
+            url: "/memo_list",
+            data: {
+                user_give: user,
+                name_give: name
+            },
+            success: function (response) {
+                let wish_list = response["wish_list"];
+                console.log(wish_list);
+                for (let i = 1; i < wish_list.length; i++) {
+                    makeCard(wish_list[i]["name"],
+                        wish_list[i]["price"],
+                        wish_list[i]["comment"],
+                        wish_list[i]["rank"],
+                        wish_list[i]["image"]);
+                }
+            }
+        })
+
+        if (name ===) return alert("일치하는 제품명이 존재하지 않습니다. 다시 입력해주세요.")
+
+        $.ajax({
+            type: "POST", // POST 방식으로 요청하겠다.
+            url: "/edit_list", // /edit_list라는 url에 요청하겠다.
+            data: {
+                user_give: user,
+                name_give: name,
+                price_give: price,
+                rank_give: rank,
+                url_give: url,
+                comment_give: comment
+            }, // 데이터를 주는 방법
+            success: function (response) { // 성공하면
+                if (response["result"] == "success") {
+                    //alert("포스팅 성공!");
+                    // 3. 성공 시 페이지 새로고침하기
+                    window.location.reload();
+                } else {
+                    alert("서버 오류!");
+                }
+            }
+        })
     }
 
 </script>

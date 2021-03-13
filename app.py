@@ -186,13 +186,14 @@ def post_list():
 # db에서 리스트 가져오기
 @app.route('/memo_list', methods=['GET'])
 def read_list():
-    # user_receive = request.form['user_give']
     user_receive = request.args.get('user_give')
     # 1. mongoDB에서 user가 user_receive와 같은 모든 데이터 조회해오기 (Read)
     result = list(db.wish_note_list.find({'user': user_receive}, {'_id': False}))
     # 2. wish_list라는 키 값으로 wish_note_list 정보 보내주기
     return jsonify({'result': 'success', 'wish_list': result})
 
+
+#
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
