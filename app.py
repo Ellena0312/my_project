@@ -13,8 +13,8 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for, g
 app = Flask(__name__)
 
 # mongodb
-# client = MongoClient('localhost', 27017)
-client = MongoClient('mongodb://test:test@localhost',27017)
+client = MongoClient('localhost', 27017)
+# client = MongoClient('mongodb://test:test@localhost',27017)
 db = client.dbsparta
 
 # jwt secret key

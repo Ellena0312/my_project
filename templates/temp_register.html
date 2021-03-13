@@ -9,19 +9,21 @@
         <div class="input-button-wrap">
             <!--            <div class="input-group mb-3">-->
             <!--                <span class="input-group-text button-name">Name</span>-->
-            <label for="name">Name <input type="text" class="input_style" id="name">
+            <label class="label_name" for="name">Name <input type="text" class="input_style_name" id="name">
             </label>
 
-            <label for="id">ID <input type="text" class="input_style" id="id">
+            <label class="label_id" for="id">ID <input type="text" class="input_style_id" id="id">
             </label>
 
-            <label for="pw">Password <input type="password" class="input_style" id="pw">
+            <label class="label_pw" for="pw">Password <input type="password" class="input_style_pw" id="pw">
             </label>
 
-            <label for="pw_check">PW check <input type="password" class="input_style" id="pw_check">
+            <label class="label_pw_check" for="pw_check">PW check <input type="password" class="input_style_pw_check"
+                                                                         id="pw_check">
             </label>
 
-            <label for="pw_check">Address <input type="textarea" class="input_style" id="address">
+            <label class="label_address" for="address">Address <input type="textarea" class="input_style_address"
+                                                                      id="address">
             </label>
             <button class="btn btn-light sign-up-button" onclick="signUp()">Sign Up</button>
         </div>
@@ -68,7 +70,6 @@
         position: fixed;
         right: 15%;
         bottom: 58%;
-        /*margin: 0 0 0 0;*/
     }
 
     .input-button-wrap {
@@ -82,14 +83,108 @@
 
     }
 
-    .input-button-wrap .input_style {
-        border: 2px solid black;
+    .input-button-wrap .label_name {
+        position: fixed;
+        left: 55%;
+        bottom: 42%;
+    }
+
+    .input-button-wrap .label_id {
+        position: fixed;
+        left: 55%;
+        bottom: 36%;
+    }
+
+    .input-button-wrap .label_pw {
+        position: fixed;
+        left: 55%;
+        bottom: 30%;
+    }
+
+    .input-button-wrap .label_pw_check {
+        position: fixed;
+        left: 55%;
+        bottom: 24%;
+    }
+
+    .input-button-wrap .label_address {
+        position: fixed;
+        left: 55%;
+        bottom: 18%;
+    }
+
+    .input-button-wrap .input_style_name {
+        border: 1px solid black;
         border-radius: 5px;
-        margin: 0 0 5px 2px;
-        background-color: rgba(255 255 255 0.1) !important;
-        /*color: white;*/
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        /*position: relative;*/
+        /*left: 8%;*/
+        position: fixed;
+        right: 15%;
+        bottom: 42%;
         height: 40px;
-        width: 80%;
+        width: 23%;
+    }
+
+    .input-button-wrap .input_style_id {
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.1);
+        /*margin: 0 0 5px 0;*/
+        /*position: relative;*/
+        /*left: 14.5%;*/
+        position: fixed;
+        right: 15%;
+        bottom: 36%;
+        color: white;
+        height: 40px;
+        width: 23%;
+    }
+
+    .input-button-wrap .input_style_pw {
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.1);
+        /*margin: 0 0 5% 0;*/
+        /*position: relative;*/
+        /*left: 1.5%;*/
+        position: fixed;
+        right: 15%;
+        bottom: 30%;
+        color: white;
+        height: 40px;
+        width: 23%;
+    }
+
+    .input-button-wrap .input_style_pw_check {
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.1);
+        /*margin: 0 0 5px 0;*/
+        /*position: relative;*/
+        /*left: 1%;*/
+        position: fixed;
+        right: 15%;
+        bottom: 24%;
+        color: white;
+        height: 40px;
+        width: 23%;
+    }
+
+    .input-button-wrap .input_style_address {
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.1);
+        /*margin: 0 0 5px 0;*/
+        /*position: relative;*/
+        /*left: 4.5%;*/
+        position: fixed;
+        right: 15%;
+        bottom: 18%;
+        color: white;
+        height: 40px;
+        width: 23%;
     }
 
     .input-button-wrap .sign-up-button {
@@ -131,7 +226,8 @@
                 id_give: id,
                 pw_give: pw,
                 name_give: name,
-                address_give: address},
+                address_give: address
+            },
             success: function (response) {
                 if (response['result'] === 'success') {
                     alert('🎉 Sign up is complete 🎉')
