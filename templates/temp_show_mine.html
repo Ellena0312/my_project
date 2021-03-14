@@ -40,17 +40,17 @@
             <div class="form-group">
                 <label for="post-rank">제품 랭크</label>
                 <select id="post-rank" class="form-control">
-                    <option value="0">별 없음!   -일단 담아보긴 했다-</option>
-                    <option value="0.5">별 반!    -그냥 그래-</option>
-                    <option value="1">별 하나!   -눈에 조금 띄네-</option>
-                    <option value="1.5">별 하나반!  -있으면 좋긴 하겠다-</option>
-                    <option value="2">별 둘!    -사긴 싫지만 받고 싶다-</option>
-                    <option value="2.5">별 둘반!   -아 이거 애매하다-</option>
-                    <option value="3">별 셋!    -오 이거 내 스타일-</option>
-                    <option value="3.5">별 셋반!   -돈모으면 사야지-</option>
-                    <option value="4">별 넷!    -지금살지 돈모으고살지 고민중-</option>
-                    <option value="4.5">별 넷반!   -돈안모여도 이건 사야돼-</option>
-                    <option value="5">별 다섯!   -지금 이미 결제중-</option>
+                    <option value="0">별 없음! -일단 담아보긴 했다-</option>
+                    <option value="0.5">별 반! -그냥 그래-</option>
+                    <option value="1">별 하나! -눈에 조금 띄네-</option>
+                    <option value="1.5">별 하나반! -있으면 좋긴 하겠다-</option>
+                    <option value="2">별 둘! -사긴 싫지만 받고 싶다-</option>
+                    <option value="2.5">별 둘반! -아 이거 애매하다-</option>
+                    <option value="3">별 셋! -오 이거 내 스타일-</option>
+                    <option value="3.5">별 셋반! -돈모으면 사야지-</option>
+                    <option value="4">별 넷! -지금살지 돈모으고살지 고민중-</option>
+                    <option value="4.5">별 넷반! -돈안모여도 이건 사야돼-</option>
+                    <option value="5">별 다섯! -지금 이미 결제중-</option>
                 </select>
             </div>
             <div class="form-group">
@@ -75,7 +75,7 @@
             <div class="card">
                 <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">제품 이름</h5>
+                    <a class="card-title">제품 이름</a>
                     <div class="rank">
                         <img class="star" src="../static/full-star.png" alt="">
                         <img class="star" src="../static/full-star.png" alt="">
@@ -258,6 +258,9 @@
     }
 
     article #card-area .card .card-body .card-title {
+        text-decoration: none;
+        font-size: 20px;
+        color: black;
         margin: 0 0 10% 0;
     }
 
@@ -451,7 +454,7 @@
                     // 3. 성공 시 페이지 새로고침하기
                     window.location.reload();
                 } else {
-                    alert("서버 오류!");
+                    alert("동일한 이름의 제품이 리스트에 이미 존재하거나 서버에 문제가 있습니다!");
                 }
             }
         })
@@ -495,8 +498,8 @@
                                 <p class="card-text">${comment}</p>
                             </div>
                             <div class="card-body">
-                                <button type="button" class="btn btn-light">good</button>
-                                <button type="button" class="btn btn-light">bad</button>
+                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
                             </div>
                         </div>`;
             $("#card-area").append(tempHtml);
@@ -516,8 +519,8 @@
                                 <p class="card-text">${comment}</p>
                             </div>
                             <div class="card-body">
-                                <button type="button" class="btn btn-light">good</button>
-                                <button type="button" class="btn btn-light">bad</button>
+                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
                             </div>
                         </div>`;
             $("#card-area").append(tempHtml);
@@ -537,8 +540,8 @@
                                 <p class="card-text">${comment}</p>
                             </div>
                             <div class="card-body">
-                                <button type="button" class="btn btn-light">good</button>
-                                <button type="button" class="btn btn-light">bad</button>
+                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
                             </div>
                         </div>`;
             $("#card-area").append(tempHtml);
@@ -558,8 +561,8 @@
                                 <p class="card-text">${comment}</p>
                             </div>
                             <div class="card-body">
-                                <button type="button" class="btn btn-light">good</button>
-                                <button type="button" class="btn btn-light">bad</button>
+                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
                             </div>
                         </div>`;
             $("#card-area").append(tempHtml);
@@ -579,8 +582,8 @@
                                 <p class="card-text">${comment}</p>
                             </div>
                             <div class="card-body">
-                                <button type="button" class="btn btn-light">good</button>
-                                <button type="button" class="btn btn-light">bad</button>
+                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
                             </div>
                         </div>`;
             $("#card-area").append(tempHtml);
@@ -600,8 +603,8 @@
                                 <p class="card-text">${comment}</p>
                             </div>
                             <div class="card-body">
-                                <button type="button" class="btn btn-light">good</button>
-                                <button type="button" class="btn btn-light">bad</button>
+                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
                             </div>
                         </div>`;
             $("#card-area").append(tempHtml);
@@ -621,8 +624,8 @@
                                 <p class="card-text">${comment}</p>
                             </div>
                             <div class="card-body">
-                                <button type="button" class="btn btn-light">good</button>
-                                <button type="button" class="btn btn-light">bad</button>
+                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
                             </div>
                         </div>`;
             $("#card-area").append(tempHtml);
@@ -642,8 +645,8 @@
                                 <p class="card-text">${comment}</p>
                             </div>
                             <div class="card-body">
-                                <button type="button" class="btn btn-light">good</button>
-                                <button type="button" class="btn btn-light">bad</button>
+                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
                             </div>
                         </div>`;
             $("#card-area").append(tempHtml);
@@ -663,8 +666,8 @@
                                 <p class="card-text">${comment}</p>
                             </div>
                             <div class="card-body">
-                                <button type="button" class="btn btn-light">good</button>
-                                <button type="button" class="btn btn-light">bad</button>
+                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
                             </div>
                         </div>`;
             $("#card-area").append(tempHtml);
@@ -684,8 +687,8 @@
                                 <p class="card-text">${comment}</p>
                             </div>
                             <div class="card-body">
-                                <button type="button" class="btn btn-light">good</button>
-                                <button type="button" class="btn btn-light">bad</button>
+                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
                             </div>
                         </div>`;
             $("#card-area").append(tempHtml);
@@ -705,8 +708,8 @@
                                 <p class="card-text">${comment}</p>
                             </div>
                             <div class="card-body">
-                                <button type="button" class="btn btn-light">good</button>
-                                <button type="button" class="btn btn-light">bad</button>
+                                <button onclick="good_button()"type="button" class="btn btn-light">good</button>
+                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
                             </div>
                         </div>`;
             $("#card-area").append(tempHtml);
@@ -719,7 +722,7 @@
 
         $.ajax({
             type: "POST",
-            url: "/show_object_list",
+            url: "/edit_object_list",
             data: {
                 user_give: user,
                 name_give: name
@@ -730,6 +733,52 @@
                     alert(response['msg'])
                 } else {
                     alert('삭제 완료')
+                    location.reload()
+                }
+            }
+        })
+    }
+
+    function good_button() {
+        let user = "{{ user['name'] }}"
+        let name = $(".card-title").val();
+
+        $.ajax({
+            type: "POST",
+            url: "/plus_rank",
+            data: {
+                user_give: user,
+                name_give: name
+            },
+            success: function (response) {
+                console.log(response)
+                if (response['result'] !== 'success') {
+                    alert(response['msg'])
+                } else {
+                    alert(response['msg'])
+                    location.reload()
+                }
+            }
+        })
+    }
+
+    function bad_button() {
+        let user = "{{ user['name'] }}"
+        let name = $(".card-title").val();
+
+        $.ajax({
+            type: "POST",
+            url: "/minus_rank",
+            data: {
+                user_give: user,
+                name_give: name
+            },
+            success: function (response) {
+                console.log(response)
+                if (response['result'] !== 'success') {
+                    alert(response['msg'])
+                } else {
+                    alert('수정 완료')
                     location.reload()
                 }
             }

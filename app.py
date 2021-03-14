@@ -137,7 +137,7 @@ def post_list():
     url_receive = request.form['url_give']  # 클라이언트로부터 url을 받는 부분
     comment_receive = request.form['comment_give']  # 클라이언트로부터 comment를 받는 부분
 
-    object_name = db.wish_note_user.find_one({'user': user_receive, 'name': name_receive})
+    object_name = db.wish_note_list.find_one({'user': user_receive, 'name': name_receive})
     if object_name is not None:
         return jsonify({'result': 'fail', 'msg': '제품 이름이 중복되었습니다'})
     else:
@@ -198,9 +198,8 @@ def read_list():
 
 
 # db에서 해당 유저의 list에 해당 이름의 제품이 있을 경우 삭제
-@app.route('/show_object_list', methods=['POST'])
+@app.route('/edit_object_list', methods=['POST'])
 def read_name_list():
-    # 1. mongoDB에서 user가 user_receive와 같은 모든 데이터 조회해오기(Read)
     user_receive = request.form['user_give']
     name_receive = request.form['name_give']
 
@@ -210,9 +209,33 @@ def read_name_list():
     else:
         db.wish_note_list.delete_one({'user': user_receive, 'name': name_receive})
 
-    # 2. wish_list라는 키 값으로 wish_note_list 정보 보내주기
     return jsonify({'result': 'success', 'msg': '해당 제품이 성공적으로 삭제 되었습니다'})
 
+# db에서 해당 유저의 list에 해당 제품의 랭크 올리기
+@app.route('/plus_rank', methods=['POST'])
+def plus_rank():
+    user_receive = request.form['user_give']
+    name_receive = request.form['name_give']
+
+    object_name = db.wish_note_list.find_one({'user': user_receive, 'name': name_receive})
+    if object_name['rank'] == 5:
+        return jsonify({'result': 'fail', 'msg': '해당 제품의 별 개수가 이미 최대입니다'})
+    else:
+        db.wish_note_list.update_one({'user': user_receive, 'name': name_receive}, {'$set': {'rank': object_name['rank']+1}})
+    return jsonify({'result': 'success', 'msg': '해당 제품의 랭크가 성공적으로 수정 되었습니다'})
+
+# db에서 해당 유저의 list에 해당 제품의 랭크 낮추기
+@app.route('/minus_rank', methods=['POST'])
+def minus_rank():
+    user_receive = request.form['user_give']
+    name_receive = request.form['name_give']
+
+    object_name = db.wish_note_list.find_one({'user': user_receive, 'name': name_receive})
+    if object_name['rank'] == 0:
+        return jsonify({'result': 'fail', 'msg': '해당 제품의 별 개수가 이미 최소입니다'})
+    else:
+        db.wish_note_list.update_one({'user': user_receive, 'name': name_receive}, {'$set': {'rank': object_name['rank']-1}})
+    return jsonify({'result': 'success', 'msg': '해당 제품의 랭크가 성공적으로 수정 되었습니다'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
