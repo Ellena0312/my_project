@@ -216,12 +216,15 @@ def read_name_list():
 def plus_rank():
     user_receive = request.form['user_give']
     name_receive = request.form['name_give']
+    print(user_receive)
+    print(name_receive)
 
     object_name = db.wish_note_list.find_one({'user': user_receive, 'name': name_receive})
+    print(object_name)
     if object_name['rank'] == 5:
         return jsonify({'result': 'fail', 'msg': '해당 제품의 별 개수가 이미 최대입니다'})
     else:
-        db.wish_note_list.update_one({'user': user_receive, 'name': name_receive}, {'$set': {'rank': object_name['rank']+1}})
+        db.wish_note_list.update_one({'user': user_receive, 'name': name_receive}, {'$set': {'rank': int(object_name['rank'])+1}})
     return jsonify({'result': 'success', 'msg': '해당 제품의 랭크가 성공적으로 수정 되었습니다'})
 
 # db에서 해당 유저의 list에 해당 제품의 랭크 낮추기
@@ -234,7 +237,7 @@ def minus_rank():
     if object_name['rank'] == 0:
         return jsonify({'result': 'fail', 'msg': '해당 제품의 별 개수가 이미 최소입니다'})
     else:
-        db.wish_note_list.update_one({'user': user_receive, 'name': name_receive}, {'$set': {'rank': object_name['rank']-1}})
+        db.wish_note_list.update_one({'user': user_receive, 'name': name_receive}, {'$set': {'rank': int(object_name['rank'])-1}})
     return jsonify({'result': 'success', 'msg': '해당 제품의 랭크가 성공적으로 수정 되었습니다'})
 
 if __name__ == '__main__':

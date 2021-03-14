@@ -481,240 +481,269 @@
         })
     }
 
+    // function makeCard(name, price, comment, rank, image) {
+    //     if (rank == 0) {
+    //         let tempHtml = `<div class="card">
+    //                         <img src="${image}" class="card-img-top" alt="...">
+    //                         <div class="card-body">
+    //                             <h5 class="card-title">${name}</h5>
+    //                             <div class="rank">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                             </div>
+    //                             <p class="card-text">${price}원</p>
+    //                             <p class="card-text">${comment}</p>
+    //                         </div>
+    //                         <div class="card-body">
+    //                             <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+    //                             <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
+    //                         </div>
+    //                     </div>`;
+    //         $("#card-area").append(tempHtml);
+    //     } else if (rank == 0.5) {
+    //         let tempHtml = `<div class="card">
+    //                         <img src="${image}" class="card-img-top" alt="...">
+    //                         <div class="card-body">
+    //                             <h5 class="card-title">${name}</h5>
+    //                             <div class="rank">
+    //                                <img class="star" src="../static/half-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                             </div>
+    //                             <p class="card-text">${price}원</p>
+    //                             <p class="card-text">${comment}</p>
+    //                         </div>
+    //                         <div class="card-body">
+    //                             <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+    //                             <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
+    //                         </div>
+    //                     </div>`;
+    //         $("#card-area").append(tempHtml);
+    //     } else if (rank == 1) {
+    //         let tempHtml = `<div class="card">
+    //                         <img src="${image}" class="card-img-top" alt="...">
+    //                         <div class="card-body">
+    //                             <h5 class="card-title">${name}</h5>
+    //                             <div class="rank">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                             </div>
+    //                             <p class="card-text">${price}원</p>
+    //                             <p class="card-text">${comment}</p>
+    //                         </div>
+    //                         <div class="card-body">
+    //                             <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+    //                             <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
+    //                         </div>
+    //                     </div>`;
+    //         $("#card-area").append(tempHtml);
+    //     } else if (rank == 1.5) {
+    //         let tempHtml = `<div class="card">
+    //                         <img src="${image}" class="card-img-top" alt="...">
+    //                         <div class="card-body">
+    //                             <h5 class="card-title">${name}</h5>
+    //                             <div class="rank">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/half-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                             </div>
+    //                             <p class="card-text">${price}원</p>
+    //                             <p class="card-text">${comment}</p>
+    //                         </div>
+    //                         <div class="card-body">
+    //                             <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+    //                             <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
+    //                         </div>
+    //                     </div>`;
+    //         $("#card-area").append(tempHtml);
+    //     } else if (rank == 2) {
+    //         let tempHtml = `<div class="card">
+    //                         <img src="${image}" class="card-img-top" alt="...">
+    //                         <div class="card-body">
+    //                             <h5 class="card-title">${name}</h5>
+    //                             <div class="rank">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                             </div>
+    //                             <p class="card-text">${price}원</p>
+    //                             <p class="card-text">${comment}</p>
+    //                         </div>
+    //                         <div class="card-body">
+    //                             <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+    //                             <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
+    //                         </div>
+    //                     </div>`;
+    //         $("#card-area").append(tempHtml);
+    //     } else if (rank == 2.5) {
+    //         let tempHtml = `<div class="card">
+    //                         <img src="${image}" class="card-img-top" alt="...">
+    //                         <div class="card-body">
+    //                             <h5 class="card-title">${name}</h5>
+    //                             <div class="rank">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/half-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                             </div>
+    //                             <p class="card-text">${price}원</p>
+    //                             <p class="card-text">${comment}</p>
+    //                         </div>
+    //                         <div class="card-body">
+    //                             <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+    //                             <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
+    //                         </div>
+    //                     </div>`;
+    //         $("#card-area").append(tempHtml);
+    //     } else if (rank == 3) {
+    //         let tempHtml = `<div class="card">
+    //                         <img src="${image}" class="card-img-top" alt="...">
+    //                         <div class="card-body">
+    //                             <h5 class="card-title">${name}</h5>
+    //                             <div class="rank">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                             </div>
+    //                             <p class="card-text">${price}원</p>
+    //                             <p class="card-text">${comment}</p>
+    //                         </div>
+    //                         <div class="card-body">
+    //                             <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+    //                             <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
+    //                         </div>
+    //                     </div>`;
+    //         $("#card-area").append(tempHtml);
+    //     } else if (rank == 3.5) {
+    //         let tempHtml = `<div class="card">
+    //                         <img src="${image}" class="card-img-top" alt="...">
+    //                         <div class="card-body">
+    //                             <h5 class="card-title">${name}</h5>
+    //                             <div class="rank">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/half-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                             </div>
+    //                             <p class="card-text">${price}원</p>
+    //                             <p class="card-text">${comment}</p>
+    //                         </div>
+    //                         <div class="card-body">
+    //                             <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+    //                             <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
+    //                         </div>
+    //                     </div>`;
+    //         $("#card-area").append(tempHtml);
+    //     } else if (rank == 4) {
+    //         let tempHtml = `<div class="card">
+    //                         <img src="${image}" class="card-img-top" alt="...">
+    //                         <div class="card-body">
+    //                             <h5 class="card-title">${name}</h5>
+    //                             <div class="rank">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/empty-star.png" alt="">
+    //                             </div>
+    //                             <p class="card-text">${price}원</p>
+    //                             <p class="card-text">${comment}</p>
+    //                         </div>
+    //                         <div class="card-body">
+    //                             <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+    //                             <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
+    //                         </div>
+    //                     </div>`;
+    //         $("#card-area").append(tempHtml);
+    //     } else if (rank == 4.5) {
+    //         let tempHtml = `<div class="card">
+    //                         <img src="${image}" class="card-img-top" alt="...">
+    //                         <div class="card-body">
+    //                             <h5 class="card-title">${name}</h5>
+    //                             <div class="rank">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/half-star.png" alt="">
+    //                             </div>
+    //                             <p class="card-text">${price}원</p>
+    //                             <p class="card-text">${comment}</p>
+    //                         </div>
+    //                         <div class="card-body">
+    //                             <button onclick="good_button()" type="button" class="btn btn-light">good</button>
+    //                             <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
+    //                         </div>
+    //                     </div>`;
+    //         $("#card-area").append(tempHtml);
+    //     } else if (rank == 5) {
+    //         let tempHtml = `<div class="card">
+    //                         <img src="${image}" class="card-img-top" alt="...">
+    //                         <div class="card-body">
+    //                             <h5 class="card-title">${name}</h5>
+    //                             <div class="rank">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                                <img class="star" src="../static/full-star.png" alt="">
+    //                             </div>
+    //                             <p class="card-text">${price}원</p>
+    //                             <p class="card-text">${comment}</p>
+    //                         </div>
+    //                         <div class="card-body">
+    //                             <button onclick="good_button()"type="button" class="btn btn-light">good</button>
+    //                             <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
+    //                         </div>
+    //                     </div>`;
+    //         $("#card-area").append(tempHtml);
+    //     }
+    // }
+
     function makeCard(name, price, comment, rank, image) {
-        if (rank == 0) {
-            let tempHtml = `<div class="card">
-                            <img src="${image}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${name}</h5>
-                                <div class="rank">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                </div>
-                                <p class="card-text">${price}원</p>
-                                <p class="card-text">${comment}</p>
-                            </div>
-                            <div class="card-body">
-                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
-                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
-                            </div>
-                        </div>`;
-            $("#card-area").append(tempHtml);
-        } else if (rank == 0.5) {
-            let tempHtml = `<div class="card">
-                            <img src="${image}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${name}</h5>
-                                <div class="rank">
-                                   <img class="star" src="../static/half-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                </div>
-                                <p class="card-text">${price}원</p>
-                                <p class="card-text">${comment}</p>
-                            </div>
-                            <div class="card-body">
-                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
-                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
-                            </div>
-                        </div>`;
-            $("#card-area").append(tempHtml);
-        } else if (rank == 1) {
-            let tempHtml = `<div class="card">
-                            <img src="${image}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${name}</h5>
-                                <div class="rank">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                </div>
-                                <p class="card-text">${price}원</p>
-                                <p class="card-text">${comment}</p>
-                            </div>
-                            <div class="card-body">
-                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
-                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
-                            </div>
-                        </div>`;
-            $("#card-area").append(tempHtml);
-        } else if (rank == 1.5) {
-            let tempHtml = `<div class="card">
-                            <img src="${image}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${name}</h5>
-                                <div class="rank">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/half-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                </div>
-                                <p class="card-text">${price}원</p>
-                                <p class="card-text">${comment}</p>
-                            </div>
-                            <div class="card-body">
-                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
-                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
-                            </div>
-                        </div>`;
-            $("#card-area").append(tempHtml);
-        } else if (rank == 2) {
-            let tempHtml = `<div class="card">
-                            <img src="${image}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${name}</h5>
-                                <div class="rank">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                </div>
-                                <p class="card-text">${price}원</p>
-                                <p class="card-text">${comment}</p>
-                            </div>
-                            <div class="card-body">
-                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
-                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
-                            </div>
-                        </div>`;
-            $("#card-area").append(tempHtml);
-        } else if (rank == 2.5) {
-            let tempHtml = `<div class="card">
-                            <img src="${image}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${name}</h5>
-                                <div class="rank">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/half-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                </div>
-                                <p class="card-text">${price}원</p>
-                                <p class="card-text">${comment}</p>
-                            </div>
-                            <div class="card-body">
-                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
-                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
-                            </div>
-                        </div>`;
-            $("#card-area").append(tempHtml);
-        } else if (rank == 3) {
-            let tempHtml = `<div class="card">
-                            <img src="${image}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${name}</h5>
-                                <div class="rank">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                </div>
-                                <p class="card-text">${price}원</p>
-                                <p class="card-text">${comment}</p>
-                            </div>
-                            <div class="card-body">
-                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
-                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
-                            </div>
-                        </div>`;
-            $("#card-area").append(tempHtml);
-        } else if (rank == 3.5) {
-            let tempHtml = `<div class="card">
-                            <img src="${image}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${name}</h5>
-                                <div class="rank">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/half-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                </div>
-                                <p class="card-text">${price}원</p>
-                                <p class="card-text">${comment}</p>
-                            </div>
-                            <div class="card-body">
-                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
-                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
-                            </div>
-                        </div>`;
-            $("#card-area").append(tempHtml);
-        } else if (rank == 4) {
-            let tempHtml = `<div class="card">
-                            <img src="${image}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${name}</h5>
-                                <div class="rank">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/empty-star.png" alt="">
-                                </div>
-                                <p class="card-text">${price}원</p>
-                                <p class="card-text">${comment}</p>
-                            </div>
-                            <div class="card-body">
-                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
-                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
-                            </div>
-                        </div>`;
-            $("#card-area").append(tempHtml);
-        } else if (rank == 4.5) {
-            let tempHtml = `<div class="card">
-                            <img src="${image}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${name}</h5>
-                                <div class="rank">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/half-star.png" alt="">
-                                </div>
-                                <p class="card-text">${price}원</p>
-                                <p class="card-text">${comment}</p>
-                            </div>
-                            <div class="card-body">
-                                <button onclick="good_button()" type="button" class="btn btn-light">good</button>
-                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
-                            </div>
-                        </div>`;
-            $("#card-area").append(tempHtml);
-        } else if (rank == 5) {
-            let tempHtml = `<div class="card">
-                            <img src="${image}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${name}</h5>
-                                <div class="rank">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                   <img class="star" src="../static/full-star.png" alt="">
-                                </div>
-                                <p class="card-text">${price}원</p>
-                                <p class="card-text">${comment}</p>
-                            </div>
-                            <div class="card-body">
-                                <button onclick="good_button()"type="button" class="btn btn-light">good</button>
-                                <button onclick="bad_button()" type="button" class="btn btn-light">bad</button>
-                            </div>
-                        </div>`;
-            $("#card-area").append(tempHtml);
+        let stars = []
+        const empty = '<img class="star" src="../static/empty-star.png" alt="">'
+        const half = '<img class="star" src="../static/half-star.png" alt="">'
+        const full = '<img class="star" src="../static/full-star.png" alt="">'
+        for(let i=0; i<5; i++) {
+            if (i + 1 <= rank) stars.push(full)
+            else if(i + 0.5 <= rank) stars.push(half)
+            else stars.push(empty)
         }
-    }
+        console.log(rank)
+        let tempHtml = `<div class="card">
+                        <img src="${image}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${name}</h5>
+                            <div class="rank">
+                                ${stars.join('\n')}
+                            </div>
+                            <p class="card-text">${price}원</p>
+                            <p class="card-text">${comment}</p>
+                        </div>
+                        <div class="card-body">
+                            <button onclick="good_button('${name}')" type="button" class="btn btn-light">good</button>
+                            <button onclick="bad_button('${name}')" type="button" class="btn btn-light">bad</button>
+                        </div>
+                    </div>`;
+        $("#card-area").append(tempHtml);
+}
 
     function removeList() {
         let user = "{{ user['name'] }}"
@@ -741,7 +770,7 @@
 
     function good_button() {
         let user = "{{ user['name'] }}"
-        let name = $(".card-title").val();
+        // let name = $(".card-title").val();
 
         $.ajax({
             type: "POST",
@@ -764,7 +793,7 @@
 
     function bad_button() {
         let user = "{{ user['name'] }}"
-        let name = $(".card-title").val();
+        // let name = $(".card-title").val();
 
         $.ajax({
             type: "POST",
