@@ -38,7 +38,21 @@
                 <label for="post-price">제품 가격</label> <input id="post-price" class="form-control">
             </div>
             <div class="form-group">
-                <label for="post-rank">제품 순위</label> <input id="post-rank" class="form-control">
+                <label for="post-rank">제품 랭크</label>
+                <select id="post-rank" class="form-control">
+                    <option value="0"></option>
+                    <option value="0.5"></option>
+                    <option value="1"></option>
+                    <option value="1.5"></option>
+                    <option value="2"></option>
+                    <option value="2.5"></option>
+                    <option value="3"></option>
+                    <option value="3.5"></option>
+                    <option value="4"></option>
+                    <option value="4.5"></option>
+                    <option value="5"></option>
+                    <option value="5.5"></option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="post-url">제품 URL</label>
@@ -62,7 +76,9 @@
             <div class="card">
                 <img src="../static/ex_candle.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="rank">- 1 -</p>
+                    <div class="rank">
+                        <img class="star" src="../static/full-star.png" alt="">
+                    </div>
                     <h5 class="card-title">제품 이름</h5>
                     <p class="card-text">제품 가격</p>
                     <p class="card-text">제품 코멘트</p>
@@ -315,9 +331,13 @@
 
     article #card-area .card .rank {
         justify-content: center;
-        font-size: 30px;
-        font-weight: 400;
+        flex-direction: row;
         margin: 0 0 15% 0;
+    }
+
+    article #card-area .card .rank .star {
+        width: 20px;
+        height: 20px;
     }
 
     article #card-area .card .card-body {
@@ -372,6 +392,10 @@
         margin: -5% 0 10% 0;
     }
 
+    article #post-box-area #post-rank {
+        width: 450%;
+        color: black;
+    }
 
     article #post-box-area #add_list_button {
         height: 30px;
@@ -565,13 +589,15 @@
             url: "/show_object_list",
             data: {
                 user_give: user,
-                name_give : name
+                name_give: name
             },
             success: function (response) {
-                let wish_list = response["wish_list"];
-                console.log(wish_list);
-                for (let i = 0; i < wish_list.length; i++) {
-
+                console.log(response)
+                if (response['result'] !== 'success') {
+                    alert(response['msg'])
+                } else {
+                    alert('삭제 완료')
+                    location.reload()
                 }
             }
         })
