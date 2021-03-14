@@ -137,54 +137,54 @@ def post_list():
     url_receive = request.form['url_give']  # 클라이언트로부터 url을 받는 부분
     comment_receive = request.form['comment_give']  # 클라이언트로부터 comment를 받는 부분
 
-    object_name = db.wish_note_user.find_one({'name': name_receive})
+    object_name = db.wish_note_user.find_one({'user': user_receive, 'name': name_receive})
     if object_name is not None:
         return jsonify({'result': 'fail', 'msg': '제품 이름이 중복되었습니다'})
-
-    # 2. meta tag를 스크래핑하기
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-    data = requests.get(url_receive, headers=headers)
-    soup = BeautifulSoup(data.text, 'html.parser')
-
-    og_image = soup.select_one('meta[property="og:image"]')
-    og_title = soup.select_one('meta[property="og:title"]')
-    og_description = soup.select_one('meta[property="og:description"]')
-
-    # url_title = og_title['content']
-    # url_description = og_description['content']
-    # url_image = og_image['content']
-
-    if og_title is not None:
-        url_title = og_title['content']
     else:
-        url_title = 'og tag가 없습니다.'
-    if og_image is not None:
-        url_image = og_image['content']
-    else:
-        url_image = 'https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png'
-    if og_image is not None:
-        url_description = og_description['content']
-    else:
-        url_description = 'og desc가 없습니다.'
+        # 2. meta tag를 스크래핑하기
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+        data = requests.get(url_receive, headers=headers)
+        soup = BeautifulSoup(data.text, 'html.parser')
 
-    wish_list = {'user': user_receive,
-                 'name': name_receive,
-                 'price': price_receive,
-                 'rank': rank_receive,
-                 'comment': comment_receive,
-                 'url': url_receive,
-                 'title': url_title,
-                 'desc': url_description,
-                 'image': url_image}
+        og_image = soup.select_one('meta[property="og:image"]')
+        og_title = soup.select_one('meta[property="og:title"]')
+        og_description = soup.select_one('meta[property="og:description"]')
 
-    # 3. mongoDB에 데이터를 넣기
-    # user_check = db.wish_note_list.find_one({'user': user_receive})
-    # if user_check is not None:
-    #     return
-    # else:
-    db.wish_note_list.insert_one(wish_list)
-    return jsonify({'result': 'success'})
+        # url_title = og_title['content']
+        # url_description = og_description['content']
+        # url_image = og_image['content']
+
+        if og_title is not None:
+            url_title = og_title['content']
+        else:
+            url_title = 'og tag가 없습니다.'
+        if og_image is not None:
+            url_image = og_image['content']
+        else:
+            url_image = 'https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png'
+        if og_image is not None:
+            url_description = og_description['content']
+        else:
+            url_description = 'og desc가 없습니다.'
+
+        wish_list = {'user': user_receive,
+                     'name': name_receive,
+                     'price': price_receive,
+                     'rank': rank_receive,
+                     'comment': comment_receive,
+                     'url': url_receive,
+                     'title': url_title,
+                     'desc': url_description,
+                     'image': url_image}
+
+        # 3. mongoDB에 데이터를 넣기
+        # user_check = db.wish_note_list.find_one({'user': user_receive})
+        # if user_check is not None:
+        #     return
+        # else:
+        db.wish_note_list.insert_one(wish_list)
+        return jsonify({'result': 'success'})
 
 
 # db에서 리스트 가져오기
@@ -212,6 +212,7 @@ def read_name_list():
 
     # 2. wish_list라는 키 값으로 wish_note_list 정보 보내주기
     return jsonify({'result': 'success', 'msg': '해당 제품이 성공적으로 삭제 되었습니다'})
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
