@@ -9,22 +9,26 @@
         <div class="input-button-wrap">
             <!--            <div class="input-group mb-3">-->
             <!--                <span class="input-group-text button-name">Name</span>-->
-            <label class="label_name" for="name">Name <input type="text" class="input_style_name" id="name">
-            </label>
-
-            <label class="label_id" for="id">ID <input type="text" class="input_style_id" id="id">
-            </label>
-
-            <label class="label_pw" for="pw">Password <input type="password" class="input_style_pw" id="pw">
-            </label>
-
-            <label class="label_pw_check" for="pw_check">PW check <input type="password" class="input_style_pw_check"
-                                                                         id="pw_check">
-            </label>
-
-            <label class="label_address" for="address">Address <input type="textarea" class="input_style_address"
-                                                                      id="address">
-            </label>
+            <div class="row">
+                <label class="label_name" for="name">Name</label>
+                <input type="text" class="input_style_name" id="name">
+            </div>
+            <div class="row">
+                <label class="label_id" for="id">ID</label>
+                <input type="text" class="input_style_id" id="id">
+            </div>
+            <div class="row">
+                <label class="label_pw" for="pw">Password</label>
+                <input type="password" class="input_style_pw" id="pw">
+            </div>
+            <div class="row">
+                <label class="label_pw_check" for="pw_check">PW check</label>
+                <input type="password" class="input_style_pw_check" id="pw_check">
+            </div>
+            <div class="row">
+                <label class="label_address" for="address">Address</label>
+                <input type="textarea" class="input_style_address" id="address">
+            </div>
             <button class="btn btn-light sign-up-button" onclick="signUp()">Sign Up</button>
         </div>
     </div>
@@ -73,6 +77,7 @@
         display: flex;
         flex-direction: column;
         margin: 10% 0 -10% 0;
+        width: 70%;
     }
 
     .input-button-wrap input {
@@ -84,123 +89,23 @@
         width: 70%;
     }
 
-    .input-button-wrap label {
-        display: inline-block;
-        width: 400px;
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 8px;
     }
 
-    /*.input-button-wrap .label_name {*/
-    /*    position: fixed;*/
-    /*    left: 55%;*/
-    /*    bottom: 42%;*/
-    /*}*/
-
-    /*.input-button-wrap .label_id {*/
-    /*    position: fixed;*/
-    /*    left: 55%;*/
-    /*    bottom: 36%;*/
-    /*}*/
-
-    /*.input-button-wrap .label_pw {*/
-    /*    position: fixed;*/
-    /*    left: 55%;*/
-    /*    bottom: 30%;*/
-    /*}*/
-
-    /*.input-button-wrap .label_pw_check {*/
-    /*    position: fixed;*/
-    /*    left: 55%;*/
-    /*    bottom: 24%;*/
-    /*}*/
-
-    /*.input-button-wrap .label_address {*/
-    /*    position: fixed;*/
-    /*    left: 55%;*/
-    /*    bottom: 18%;*/
-    /*}*/
-
-    /*.input-button-wrap .input_style_name {*/
-    /*    border: 1px solid black;*/
-    /*    border-radius: 5px;*/
-    /*    background-color: rgba(255, 255, 255, 0.1);*/
-    /*    color: white;*/
-    /*    !*position: relative;*!*/
-    /*    !*left: 8%;*!*/
-    /*    position: fixed;*/
-    /*    right: 15%;*/
-    /*    bottom: 42%;*/
-    /*    height: 40px;*/
-    /*    width: 23%;*/
-    /*}*/
-
-    /*.input-button-wrap .input_style_id {*/
-    /*    border: 1px solid black;*/
-    /*    border-radius: 5px;*/
-    /*    background-color: rgba(255, 255, 255, 0.1);*/
-    /*    !*margin: 0 0 5px 0;*!*/
-    /*    !*position: relative;*!*/
-    /*    !*left: 14.5%;*!*/
-    /*    position: fixed;*/
-    /*    right: 15%;*/
-    /*    bottom: 36%;*/
-    /*    color: white;*/
-    /*    height: 40px;*/
-    /*    width: 23%;*/
-    /*}*/
-
-    /*.input-button-wrap .input_style_pw {*/
-    /*    border: 1px solid black;*/
-    /*    border-radius: 5px;*/
-    /*    background-color: rgba(255, 255, 255, 0.1);*/
-    /*    !*margin: 0 0 5% 0;*!*/
-    /*    !*position: relative;*!*/
-    /*    !*left: 1.5%;*!*/
-    /*    position: fixed;*/
-    /*    right: 15%;*/
-    /*    bottom: 30%;*/
-    /*    color: white;*/
-    /*    height: 40px;*/
-    /*    width: 23%;*/
-    /*}*/
-
-    /*.input-button-wrap .input_style_pw_check {*/
-    /*    border: 1px solid black;*/
-    /*    border-radius: 5px;*/
-    /*    background-color: rgba(255, 255, 255, 0.1);*/
-    /*    !*margin: 0 0 5px 0;*!*/
-    /*    !*position: relative;*!*/
-    /*    !*left: 1%;*!*/
-    /*    position: fixed;*/
-    /*    right: 15%;*/
-    /*    bottom: 24%;*/
-    /*    color: white;*/
-    /*    height: 40px;*/
-    /*    width: 23%;*/
-    /*}*/
-
-    /*.input-button-wrap .input_style_address {*/
-    /*    border: 1px solid black;*/
-    /*    border-radius: 5px;*/
-    /*    background-color: rgba(255, 255, 255, 0.1);*/
-    /*    !*margin: 0 0 5px 0;*!*/
-    /*    !*position: relative;*!*/
-    /*    !*left: 4.5%;*!*/
-    /*    position: fixed;*/
-    /*    right: 15%;*/
-    /*    bottom: 18%;*/
-    /*    color: white;*/
-    /*    height: 40px;*/
-    /*    width: 23%;*/
-    /*}*/
-
     .input-button-wrap .sign-up-button {
-        margin-top: 1rem;
+        margin-top: 1.5rem;
+        margin-left: -5%;
         background-color: white;
         opacity: 30%;
+        width: 110%;
     }
 
     .input-button-wrap .sign-up-button:hover {
-        margin-top: 1rem;
+        margin-top: 1.5rem;
         background-color: white;
         opacity: 100%;
     }

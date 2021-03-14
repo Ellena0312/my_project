@@ -137,6 +137,10 @@ def post_list():
     url_receive = request.form['url_give']  # 클라이언트로부터 url을 받는 부분
     comment_receive = request.form['comment_give']  # 클라이언트로부터 comment를 받는 부분
 
+    object_name = db.wish_note_user.find_one({'name': name_receive})
+    if object_name is not None:
+        return jsonify({'result': 'fail', 'msg': '제품 이름이 중복되었습니다'})
+
     # 2. meta tag를 스크래핑하기
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
@@ -193,7 +197,21 @@ def read_list():
     return jsonify({'result': 'success', 'wish_list': result})
 
 
-#
+# db에서 해당 유저의 list에 해당 이름의 제품이 있을 경우 삭제
+@app.route('/show_object_list', methods=['POST'])
+def read_name_list():
+    # 1. mongoDB에서 user가 user_receive와 같은 모든 데이터 조회해오기(Read)
+    user_receive = request.form['user_give']
+    name_receive = request.form['name_give']
+
+    object_name = db.wish_note_list.find_one({'user': user_receive, 'name': name_receive})
+    if object_name is None:
+        return jsonify({'result': 'fail', 'msg': '해당 이름의 제품이 존재하지 않습니다. 다시 입력해주세요.'})
+    else:
+        db.wish_note_list.delete_one({'user': user_receive, 'name': name_receive})
+
+    # 2. wish_list라는 키 값으로 wish_note_list 정보 보내주기
+    return jsonify({'result': 'success', 'msg': '해당 제품이 성공적으로 삭제 되었습니다'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
